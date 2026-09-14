@@ -9,8 +9,16 @@
     <?php
     $nome= "Micael";
     $idade = 23;
+
+    if ($nome > 18){
+        $maior = "Sim";
+    }else{
+        $maior = "Não";
+    }
     ?>
     <h1>Nome: <?= $nome ?> </h1>
     <p>Idade: <?= $idade ?></p>
+
+    <p>É de Maior?: <? $maior ?></p>
 </body>
 </html>
