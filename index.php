@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
     <title>HTML no PHP</title>
 </head>
 <body>
@@ -16,9 +17,14 @@
         $maior = "Não";
     }
     ?>
+    <div class="ti">
     <h1>Nome: <?= $nome ?> </h1>
     <p>Idade: <?= $idade ?></p>
+    </div>
 
-    <p>É de Maior?: <?= $maior ?></p>
+    <div class="res">
+        <p>É de Maior?: <?= $maior ?></p>
+    </div>
+     
 </body>
 </html>
