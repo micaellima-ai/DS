@@ -19,6 +19,6 @@
     <h1>Nome: <?= $nome ?> </h1>
     <p>Idade: <?= $idade ?></p>
 
-    <p>É de Maior?: <? $maior ?></p>
+    <p>É de Maior?: <?= $maior ?></p>
 </body>
 </html>
