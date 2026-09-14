@@ -1,5 +1,9 @@
 *{
-    background-color: black;
+    background-color: bisque;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
 }
 
 body{
@@ -7,17 +11,17 @@ body{
     justify-content: baseline;
     align-items: center;
     min-height: 100vh;
-    
+
 
 }
 
 .ti h1{
     text-align: center;
-    color: green;
+    color: rgb(0, 0, 0);
 }
 .ti p{
     text-align: center;
-    color: green;
+    color: rgb(0, 0, 0);
 }
 
 
@@ -26,3 +30,7 @@ body{
     color: red;
 }
 
+
+.res{
+
+}
