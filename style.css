@@ -2,6 +2,14 @@
     background-color: black;
 }
 
+body{
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    min-height: 100vh;
+    
+
+}
 
 .ti h1{
     text-align: center;
