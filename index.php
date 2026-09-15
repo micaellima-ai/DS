@@ -48,6 +48,7 @@
         <?php if ($resultado != "") { ?>
             <div class="res">
                 <p> Seu nome é <?= $nome ?> e tem <?= $idade ?> anos. 
+                <br>
                 Você é de maior? <?= $resultado ?> </p>
             </div>
             <?php } ?>
