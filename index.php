@@ -30,9 +30,7 @@
     <p>Idade: <?= $idade ?></p>
     </div>
 
-    <div class="res">
-        <p>É de Maior?: <?= $maior ?></p>
-    </div>
+
       
         <form class="card" method="POST">
 
