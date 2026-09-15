@@ -1,39 +1,38 @@
     <?php
-    $nome= "";
+    $nome = "";
     $idade = "";
-    $resultado = "" ;
+    $resultado = "";
 
-    if($_SERVER["REQUEST_METHOD"]=="POST"){
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nome = $_POST["nome"];
         $idade = $_POST["idade"];
-        
     }
 
-    if ($nome > 18){
+    if ($nome > 18) {
         $maior = "Sim";
-    }else{
+    } else {
         $maior = "Não";
     }
     ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>HTML no PHP</title>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
 
-    <div class="ti">
-    <h1>Nome: <?= $nome ?> </h1>
-    <p>Idade: <?= $idade ?></p>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>HTML no PHP</title>
+    </head>
 
-    <div class="res">
-        <p>É de Maior?: <?= $maior ?></p>
-    </div>
-      
+    <body>
+
+        <div class="ti">
+            <h1>Nome: <?= $nome ?> </h1>
+            <p>Idade: <?= $idade ?></p>
+        </div>
+
+
+
         <form class="card" method="POST">
 
             <label for="nome">Nome</label>
@@ -43,15 +42,16 @@
             <input type="number" id="idade" name="idade" placeholder="Digite a idade">
 
             <button type="submit">Enviar</button>
-       
+
         </form>
 
-        <?php if($resultado != "") { ?>
-        <div>
-            <p> "seu nome <?= $nome ?>e tem <?=  $idade ?> anos. Você é de maior? <?=  $resultado ?> </p> 
+        <?php if ($resultado != "") { ?>
+            <div class="res">
+                <p> "seu nome <?= $nome ?>e tem <?= $idade ?> anos. Você é de maior? <?= $resultado ?> </p>
 
-        <?php } ?>
-    </div>
-</div>
-</body>
-</html>
+            <?php } ?>
+            </div>
+
+    </body>
+
+    </html>
