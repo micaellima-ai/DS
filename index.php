@@ -8,10 +8,10 @@
         $idade = $_POST["idade"];
     }
 
-    if ($nome > 18) {
-        $maior = "Sim";
+    if ($idade > 18) {
+        $resultado = "Sim";
     } else {
-        $maior = "Não";
+        $resultado = "Não";
     }
     ?>
     <!DOCTYPE html>
@@ -47,7 +47,8 @@
 
         <?php if ($resultado != "") { ?>
             <div class="res">
-                <p> Seu nome é <?= $nome ?> e tem <?= $idade ?> anos. Você é de maior? <?= $resultado ?> </p>
+                <p> Seu nome é <?= $nome ?> e tem <?= $idade ?> anos. 
+                Você é de maior? <?= $resultado ?> </p>
             </div>
             <?php } ?>
             
