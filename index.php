@@ -33,7 +33,7 @@
 
 
 
-        <form class="card" method="POST">
+        <form  method="POST">
 
             <label for="nome">Nome</label>
             <input type="text" id="nome" name="nome" placeholder="Digite o nome">
