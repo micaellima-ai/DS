@@ -33,7 +33,7 @@
 
 
 
-        <form  method="POST">
+        <form method="POST">
 
             <label for="nome">Nome</label>
             <input type="text" id="nome" name="nome" placeholder="Digite o nome">
@@ -47,20 +47,14 @@
 
         <?php if ($resultado != "") { ?>
             <div class="res">
-                <p> Seu nome é <?= $nome ?> e tem <?= $idade ?> anos. 
-                <br>
-                    Você é de maior de idade?: <?= $resultado ?>  </p>
-                <style>
-                    p {
-                        color: black;
+                <p> Seu nome é <?= $nome ?> e tem <?= $idade ?> anos.
+                    <br>
+                    Você é de maior de idade?: <?= $resultado ?>
+                </p>
 
-                    }
-                    
-                </style>
-                
             </div>
-            <?php } ?>
-            
+        <?php } ?>
+
 
     </body>
 
