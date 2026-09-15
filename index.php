@@ -47,7 +47,7 @@
         </form>
 
         <?php if($resultado != "") { ?>
-            echo <?= $nome ?> <?=  $idade ?>
+            <p> "seu nome <?= $nome ?>e tem <?=  $idade ?> anos. Você é de maior? <?=  $resultado ?> </p> 
 
         <?php } ?>
    
