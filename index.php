@@ -16,6 +16,8 @@
     }else{
         $maior = "Não";
     }
+        
+
     ?>
     <div class="ti">
     <h1>Nome: <?= $nome ?> </h1>
@@ -25,6 +27,36 @@
     <div class="res">
         <p>É de Maior?: <?= $maior ?></p>
     </div>
+
+    
+        
+        <form class="card" action="$">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" placeholder="Digite o nome">
+
+            <label for="idade">Idade</label>
+            <input type="number" name="idade" placeholder="Digite a idade">
+
+            <button type="submit">Enviar</button>
+        
+
+
+
+
+        </form>
+            
+        
+
+
+
+
+   
+
+
+
+
+
+
      
 </body>
 </html>
