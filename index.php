@@ -52,7 +52,7 @@
                     Você é de maior de idade?: <?= $resultado ?>  </p>
                 <style>
                     p {
-                        color: red;
+                        color: black;
 
                     }
                     
