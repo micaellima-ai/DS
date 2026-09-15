@@ -47,7 +47,7 @@
         </form>
 
         <?php if($resultado != "") { ?>
-
+            echo <?= $nome ?> <?=  $idade ?>
 
         <?php } ?>
    
