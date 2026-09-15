@@ -1,6 +1,6 @@
     <?php
     $nome = "";
-    $idade = "";
+    $idade = 0;
     $resultado = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -48,7 +48,7 @@
         <?php if ($resultado != "") { ?>
             <div class="res">
                 <p> "seu nome <?= $nome ?>e tem <?= $idade ?> anos. Você é de maior? <?= $resultado ?> </p>
-</div>
+            </div>
             <?php } ?>
             
 
