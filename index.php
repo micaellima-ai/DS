@@ -1,3 +1,20 @@
+    <?php
+    $nome= "";
+    $idade = "";
+    $resultado = "" ;
+
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $nome = $_POST["nome"];
+        $idade = $_POST["idade"];
+        
+    }
+
+    if ($nome > 18){
+        $maior = "Sim";
+    }else{
+        $maior = "Não";
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,18 +24,7 @@
     <title>HTML no PHP</title>
 </head>
 <body>
-    <?php
-    $nome= "Micael";
-    $idade = 23;
 
-    if ($nome > 18){
-        $maior = "Sim";
-    }else{
-        $maior = "Não";
-    }
-        
-
-    ?>
     <div class="ti">
     <h1>Nome: <?= $nome ?> </h1>
     <p>Idade: <?= $idade ?></p>
@@ -27,36 +33,23 @@
     <div class="res">
         <p>É de Maior?: <?= $maior ?></p>
     </div>
+      
+        <form class="card" method="POST">
 
-    
-        
-        <form class="card" action="$">
             <label for="nome">Nome</label>
-            <input type="text" name="nome" placeholder="Digite o nome">
+            <input type="text" id="nome" name="nome" placeholder="Digite o nome">
 
             <label for="idade">Idade</label>
-            <input type="number" name="idade" placeholder="Digite a idade">
+            <input type="number" id="idade" name="idade" placeholder="Digite a idade">
 
             <button type="submit">Enviar</button>
-        
-
-
-
-
+       
         </form>
-            
-        
+
+        <?php if($resultado != "") { ?>
 
 
-
-
+        <?php } ?>
    
-
-
-
-
-
-
-     
 </body>
 </html>
