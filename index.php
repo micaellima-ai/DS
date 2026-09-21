@@ -10,6 +10,7 @@
     <ul>
         <li><a href="idade.php">Validação de Idade</a></li>
         <li><a href="notas.php">Atividade Notas</a></li>
+        <li><a href="desafio.php">Desafio</a></li>
 
     </ul>
   
