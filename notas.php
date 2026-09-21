@@ -45,6 +45,7 @@ if ($media >= 7) {
 </head>
 
 <body>
+    <form method="POST">
     <label for="nome">Nome</label>
     <input type="text" id="nome" name="nome" placeholder="Digite o nome">
 
@@ -74,6 +75,9 @@ if ($media >= 7) {
 
     <button type="submit">Enviar</button>
 
+    </form>
+ 
+
 
     <?php if ($situação != "") { ?>
         <p> Nome do Aluno: <?= $nome ?> </p>
@@ -88,7 +92,7 @@ if ($media >= 7) {
 
     <?php } ?>
 
-    <br>
+    <br><br>
     <a href="index.php">Voltar</a>
 </body>
 
