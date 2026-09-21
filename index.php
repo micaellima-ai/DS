@@ -49,11 +49,12 @@
             <div class="res">
                 <p > Seu nome é <?= $nome ?> e tem <?= $idade ?> anos.
                     <br>
-                    Você é de maior de idade?: <p class="resultado"> <?= $resultado ?></p> 
+                    Você é de maior de idade?: <?= $resultado ?> 
                 </p>
 
             </div>
-        <?php } ?>
+      
+            
 
 
     </body>
