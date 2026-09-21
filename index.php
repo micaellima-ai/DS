@@ -8,6 +8,7 @@
 <body>
 
 <a href="idade.php">Validação de Idade</a>
+<a href="notas.php">Atividade Notas</a>
     
 </body>
 </html>
