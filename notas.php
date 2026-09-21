@@ -24,9 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         ) / 10; 
 }
 
-if ($situação >= 7){
+if ($media >= 7){
     $situação = "Aprovado";
-} elseif($situação >= 5 && $situação < 7){
+} elseif($media >= 5 && $media < 7){
     $situação = "Recuperação";
 } else {
     $situação = "Reprovado";
@@ -51,23 +51,23 @@ if ($situação >= 7){
         <br><br>
 
         <label for="nota1">Nota1</label>
-        <input type="number" name="nota1" id="nota1" min = 0 max = 2  placeholder="Digite sua 1° Nota">
+        <input type="number" name="nota1" id="nota1" min = 0 max = 10  placeholder="Digite sua 1° Nota">
         <br><br>
 
         <label for="nota2">Nota2</label>
-        <input type="number" name="nota2" id="nota2" min = 0 max = 3 placeholder="Digite sua 2° Nota">
+        <input type="number" name="nota2" id="nota2" min = 0 max = 10 placeholder="Digite sua 2° Nota">
         <br><br>
 
         <label for="nota3">Nota3</label>
-        <input type="number" name="nota3" id="nota3" min = 0 max = 1 placeholder="Digite sua 3° Nota">
+        <input type="number" name="nota3" id="nota3" min = 0 max = 10 placeholder="Digite sua 3° Nota">
         <br><br>
 
         <label for="nota4">Nota4</label>
-        <input type="number" name="nota4" id="nota4" min = 0 max = 1 placeholder="Digite sua 4° Nota">
+        <input type="number" name="nota4" id="nota4" min = 0 max = 10 placeholder="Digite sua 4° Nota">
         <br><br>
 
         <label for="nota5">Nota5</label>
-        <input type="number" name="nota5" id="nota5" min = 0 max = 3 placeholder="Digite sua 5° Nota">
+        <input type="number" name="nota5" id="nota5" min = 0 max = 10 placeholder="Digite sua 5° Nota">
         <br><br>
 
         <button type="submit">Enviar</button>
@@ -76,7 +76,13 @@ if ($situação >= 7){
         <?php if ($situação != "" ) { ?>
         <p> Nome Aluno: <?= $nome ?> </p>
         <p> Idade do Aluno: <?= $idade ?> </p>
+        <p>Nota 1: <?= $nota1 ?> </p>
+        <p>Nota 2: <?= $nota2 ?> </p>
+        <p>Nota 3: <?= $nota3 ?> </p>
+        <p>Nota 4: <?= $nota4 ?> </p>
+        <p>Nota 5 <?= $nota5 ?> </p>
         <p> Media do Aluno: <?= $media ?> </p>
+        <p>Situação: <?= $situação ?> </p>
 
         <?php } ?>
 
