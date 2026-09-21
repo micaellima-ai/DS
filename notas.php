@@ -19,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     $media = (
-        ($nota1 * 2) + ($nota2 * 3) + ($nota3 * 1) +($nota4 * 1) + ($nota5 * 3)
-        );
+        ($nota1 * 2) + ($nota2 * 3) + ($nota3 * 1) +($nota4 * 1) + ($nota5 * 3) 
+        ) / 10; 
 }
 
 ?>
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Nota Aluno</title>
 </head>
 <body>
         <label for="nome">Nome</label>
@@ -42,25 +42,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
         <label for="nota1">Nota1</label>
         <input type="number" name="nota1" id="nota1" placeholder="Digite sua 1° Nota">
+        <br><br>
 
         <label for="nota2">Nota2</label>
         <input type="number" name="nota2" id="nota2" placeholder="Digite sua 2° Nota">
+        <br><br>
 
         <label for="nota3">Nota3</label>
         <input type="number" name="nota3" id="nota3" placeholder="Digite sua 3° Nota">
+        <br><br>
 
         <label for="nota4">Nota4</label>
         <input type="number" name="nota4" id="nota4" placeholder="Digite sua 4° Nota">
+        <br><br>
 
         <label for="nota5">Nota5</label>
         <input type="number" name="nota5" id="nota5" placeholder="Digite sua 5° Nota">
-
-
-
-
+        <br><br>
+        
         <button type="submit">Enviar</button>
 
 
+        <p> Nome Aluno: <?= $nome ?> </p>
+        <p> Idade do Aluno: <?= $idade ?> </p>
+        <p> Media do Aluno: <?= $media ?> </p>
 
 
 
@@ -68,5 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 
+<br>
+<a href="index.php">Voltar</a>
 </body>
 </html>
