@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <br><br>
 
         <label for="frequencia">Frequencia</label>
-        <input type="number" name="frequencia" id= "frequencia" min=0 max=100 placeholder="Digite a Frequencia %" required>
+        <input type="number" name="frequencia" id= "frequencia" min=0 max=100 placeholder="Digite a Frequencia (%)" required>
         <br><br>
 
         <button type="submit">Enviar</button>
@@ -105,16 +105,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php if ($situação != "") {?>
 
-        <p> Nome do Aluno: <?= $nome ?> </p>
-        <p> Idade do Aluno: <?= $idade ?> </p>
+        <p><strong> Nome do Aluno: </strong> <?= $nome ?> </p>
+        <p> <strong> Idade do Aluno: </strong> <?= $idade ?> </p>
         <p>Nota 1: <?= $nota1 ?> </p>
         <p>Nota 2: <?= $nota2 ?> </p>
         <p>Nota 3: <?= $nota3 ?> </p>
         <p>Nota 4: <?= $nota4 ?> </p>
         <p>Nota 5: <?= $nota5 ?> </p>
-        <p>Media do Aluno: <?= $media ?> </p>
-        <p>Situação: <?= $situação ?> </p>
-        <p>Frequencia do aluno: <?= $frequencia ?> %</p>
+        <p> <strong> Media do Aluno: </strong><?= $media ?> </p>
+        <p> <strong> Situação: </strong> 
+            <span style="color: <?= ($situação == 'APROVADO' || $situação == 'APROVADO COM EXCELÊNCIA') ? 'green ' : (($situação == 'RECUPERAÇÃO') ? 'orange' : 'red') ?> "> 
+                 <?= $situação ?> 
+            </span>
+    </p>
+        <p> <strong> Frequencia do aluno: </strong><?= $frequencia ?> %</p>
 
     <?php } ?>
 
