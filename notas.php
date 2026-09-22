@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ($nota1 * 2) + ($nota2 * 3) + ($nota3 * 1) + ($nota4 * 1) + ($nota5 * 3)
     ) / 10;
 
-    if($media = 10){
+    if($media == 10){
         $situação = "APROVADO COM EXCELÊNCIA";
     }
     elseif($media >= 7) {
