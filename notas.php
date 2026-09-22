@@ -107,10 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Situação: <?= $situação ?> </p>
     <?php } ?>
 
-    <?php if ($situação == "RECUPERAÇÃO" || $situação == "REPROVADO"){  ?>
-        <p>Situação: <?= $situação ?>, falta </p>
 
-        <?php } ?>
     <br><br>
     <a href="index.php">Voltar</a>
 </body>
