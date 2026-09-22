@@ -4,7 +4,7 @@ $idade = 0;
 $media = 0;
 $situação = "";
 $resto = 0;
-$frequencia = 0;
+
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nota3 = $_POST["nota3"];
     $nota4 = $_POST["nota4"];
     $nota5 = $_POST["nota5"];
+    $frequencia = $_POST ["frequencia"];
     
 
 
