@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" id="nome" name="nome" placeholder="Digite o nome">
 
         <label for="idade">Idade</label>
-        <input type="number" id="idade" name="idade" placeholder="Digite a idade">
+        <input type="number" id="idade" name="idade" min = 1 placeholder="Digite a idade">
         <br><br>
 
         <label for="nota1">Nota1</label>
