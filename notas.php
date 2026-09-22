@@ -117,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php if ($situação == "RECUPERAÇÃO" || $situação == "REPROVADO"){  ?>
 
         <p>Faltaram <?= $resto ?> pontos para APROVAÇÃO!! </p>
-        <p>Frequencia do aluno: <?= $frequencia ?> %</p>
+        
 
     <?php } ?>
 <br><br>
