@@ -3,6 +3,9 @@ $nome = "";
 $idade = 0;
 $media = 0;
 $situação = "";
+$resto = 0;
+$restofre = 0;
+
 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -16,6 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $nota3 = $_GET["nota3"];
     $nota4 = $_GET["nota4"];
     $nota5 = $_GET["nota5"];
+    $frequencia = $_GET["frequencia"];
+
 
 
 
@@ -23,13 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         ($nota1 * 2) + ($nota2 * 3) + ($nota3 * 1) + ($nota4 * 1) + ($nota5 * 3)
     ) / 10;
 
-
-    if ($media >= 7) {
-        $situação = "Aprovado";
-    } elseif ($media >= 5 && $media < 7) {
-        $situação = "Recuperação";
+    if ($media == 10 && $frequencia >= 75) {
+        $situação = "APROVADO COM EXCELÊNCIA";
+    } elseif ($media >= 7 && $frequencia >= 75) {
+        $situação = "APROVADO";
+    } elseif ($media >= 5 && $media < 7 && $frequencia >= 75) {
+        $situação = "RECUPERAÇÃO";
+        $resto = 7 - $media;
     } else {
-        $situação = "Reprovado";
+        $situação = "REPROVADO";
+        $resto = 7 - $media;
     }
 }
 ?>
@@ -45,18 +53,19 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="notas.css">
-
-    <title>Nota (Desafio)</title>
+    <title>Nota Aluno</title>
 </head>
 
 <body>
+    <h1>Requisitos</h1>
+
     <form method="GET">
 
         <label for="nome">Nome</label>
         <input type="text" id="nome" name="nome" placeholder="Digite o nome">
 
         <label for="idade">Idade</label>
-        <input type="number" id="idade" name="idade" placeholder="Digite a idade">
+        <input type="number" id="idade" name="idade" min=1 placeholder="Digite a idade">
         <br><br>
 
         <label for="nota1">Nota1</label>
@@ -79,6 +88,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <input type="number" name="nota5" id="nota5" min=0 max=10 placeholder="Digite sua 5° Nota" required>
         <br><br>
 
+        <label for="frequencia">Frequencia</label>
+        <input type="number" name="frequencia" id="frequencia" min=0 max=100 placeholder="Digite a Frequencia (%)" required>
+        <br><br>
+
         <button type="submit">Enviar</button>
 
     </form>
@@ -86,20 +99,56 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 
     <?php if ($situação != "") { ?>
-        <p> Nome do Aluno: <?= $nome ?> </p>
-        <p> Idade do Aluno: <?= $idade ?> </p>
-        <p>Nota 1: <?= $nota1 ?> </p>
-        <p>Nota 2: <?= $nota2 ?> </p>
-        <p>Nota 3: <?= $nota3 ?> </p>
-        <p>Nota 4: <?= $nota4 ?> </p>
-        <p>Nota 5: <?= $nota5 ?> </p>
-        <p> Media do Aluno: <?= $media ?> </p>
-        <p>Situação: <?= $situação ?> </p>
+
+        <p><strong> Nome do Aluno: </strong> <?= $nome ?> </p>
+        <p> <strong> Idade do Aluno: </strong> <?= $idade ?> </p>
+        <ul>
+            <li>
+                <p>Nota 1: <?= $nota1 ?> </p>
+            </li>
+
+            <li>
+                <p>Nota 2: <?= $nota2 ?> </p>
+            </li>
+
+
+            <li>
+                <p>Nota 3: <?= $nota3 ?> </p>
+            </li>
+
+            <li>
+                <p>Nota 4: <?= $nota4 ?> </p>
+            </li>
+
+            <li>
+                <p>Nota 5: <?= $nota5 ?> </p>
+            </li>
+
+
+        </ul>
+
+        <p> <strong> Media do Aluno: </strong><?= $media ?> </p>
+        <p> <strong> Situação: </strong>
+            <span style="color: <?= ($situação == 'APROVADO' || $situação == 'APROVADO COM EXCELÊNCIA') ? 'green ' : (($situação == 'RECUPERAÇÃO') ? 'orange' : 'red') ?> ">
+                <?= $situação ?>
+            </span>
+        </p>
+        <p> <strong> Frequencia do aluno: </strong><?= $frequencia ?> %</p>
 
     <?php } ?>
 
+    <?php if (($situação == "RECUPERAÇÃO" || $situação == "REPROVADO") && $frequencia >= 75) {  ?>
+
+        <p>Faltaram <?= $resto ?> pontos para APROVAÇÃO!! </p>
+
+    <?php } ?>
+
+
+
     <br><br>
+
     <a href="index.php">Voltar</a>
+
 </body>
 
 </html>
