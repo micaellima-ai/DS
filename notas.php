@@ -3,6 +3,7 @@ $nome = "";
 $idade = 0;
 $media = 0;
 $situação = "";
+$resto = 0;
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -25,11 +26,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     if ($media >= 7) {
-        $situação = "Aprovado";
+        $situação = "APROVADO";
     } elseif ($media >= 5 && $media < 7) {
-        $situação = "Recuperação";
-    } else {
-        $situação = "Reprovado";
+        $situação = "RECUPERAÇÃO";
+        $resto = 7 - $media;
+    } elseif($media = 10){
+        $situação = "APROVADO COM EXCELÊNCIA";
+    }else {
+        $situação = "REPROVADO";
+        $resto = 7 - $media;
     }
 }
 ?>
@@ -86,7 +91,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    <?php if ($situação != "") { ?>
+    <?php 
+        if ($situação != "") {
+    ?>
         <p> Nome do Aluno: <?= $nome ?> </p>
         <p> Idade do Aluno: <?= $idade ?> </p>
         <p>Nota 1: <?= $nota1 ?> </p>
@@ -94,11 +101,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Nota 3: <?= $nota3 ?> </p>
         <p>Nota 4: <?= $nota4 ?> </p>
         <p>Nota 5: <?= $nota5 ?> </p>
-        <p> Media do Aluno: <?= $media ?> </p>
+        <p>Media do Aluno: <?= $media ?> </p>
         <p>Situação: <?= $situação ?> </p>
-
     <?php } ?>
 
+    <?php if ($situação == "RECUPERAÇÃO" || $situação == "REPROVADO"){  ?>
+        <p>Situação: <?= $situação ?>, falta </p>
+
+        <?php } ?>
     <br><br>
     <a href="index.php">Voltar</a>
 </body>
