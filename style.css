@@ -1,31 +1,138 @@
-* {
+
+button {
+    width: 100%;
+    padding: 12px;
+  
+    background-color: #333;
+    color: white;
+  
+    border: none;
+    border-radius: 6px;
+  
+    font-size: 16px;
+    font-weight: 600;
+  
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
+  
+ 
+  input {
+    transition: 0.3s;
+  }
+  
+  input:focus {
+    border-color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  
+  
+  body > p {
+    width: 100%;
+    max-width: 500px;
+  
+    background-color: white;
+  
+    padding: 10px 20px;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: bisque;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.ti h1,
-.ti p {
-    text-align: center;
-    color: black;
-}
-
-.res p {
-    text-align: center;
-    color: black;
-}
-
-
-.resultado{
-    color: red;
-}
-
+  
+    color: #444;
+  }
+  
+  
+  
+  body > p:first-of-type {
+    margin-top: 25px;
+    padding-top: 20px;
+  
+    border-radius: 12px 12px 0 0;
+  }
+  
+  
+  
+  body > p:last-of-type {
+    padding-bottom: 20px;
+  
+    border-radius: 0 0 12px 12px;
+  }
+  
+  
+  
+  span {
+    display: inline-block;
+  
+    padding: 7px 12px;
+    margin-left: 5px;
+  
+    border-radius: 6px;
+  
+    font-weight: 700;
+  }
+  
+  
+  
+  span[style*="green"] {
+    background-color: #d4edda;
+    color: #155724 !important;
+  
+    border: 1px solid #b7dfc0;
+  }
+  
+  
+  
+  span[style*="orange"] {
+    background-color: #fff3cd;
+    color: #856404 !important;
+  
+    border: 1px solid #ffe69c;
+  }
+  
+  
+  
+  span[style*="red"] {
+    background-color: #f8d7da;
+    color: #721c24 !important;
+  
+    border: 1px solid #f1b0b7;
+  }
+  
+  
+ 
+  a {
+    margin-top: 20px;
+  
+    color: #333;
+    text-decoration: none;
+  
+    font-weight: 600;
+  
+    transition: 0.3s;
+  }
+  
+  a:hover {
+    color: #666;
+    text-decoration: underline;
+  }
+  
+  
+  
+  @media (max-width: 600px) {
+    body {
+      padding: 25px 15px;
+    }
+  
+    form {
+      padding: 20px;
+    }
+  
+    body > p {
+      max-width: 100%;
+    }
+  }
+  
