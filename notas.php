@@ -19,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nota3 = $_POST["nota3"];
     $nota4 = $_POST["nota4"];
     $nota5 = $_POST["nota5"];
-    $frequencia = $_POST ["frequencia"];
-    
+    $frequencia = $_POST["frequencia"];
+
 
 
 
@@ -28,21 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ($nota1 * 2) + ($nota2 * 3) + ($nota3 * 1) + ($nota4 * 1) + ($nota5 * 3)
     ) / 10;
 
-    if($media == 10 && $frequencia >= 75){
+    if ($media == 10 && $frequencia >= 75) {
         $situação = "APROVADO COM EXCELÊNCIA";
-    }
-    elseif($media >= 7 && $frequencia >= 75) {
+    } elseif ($media >= 7 && $frequencia >= 75) {
         $situação = "APROVADO";
-    } 
-    elseif ($media >= 5 && $media < 7 && $frequencia >= 75) {
+    } elseif ($media >= 5 && $media < 7 && $frequencia >= 75) {
         $situação = "RECUPERAÇÃO";
         $resto = 7 - $media;
-
-    } 
-    else {
+    } else {
         $situação = "REPROVADO";
         $resto = 7 - $media;
-        
     }
 }
 ?>
@@ -70,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" id="nome" name="nome" placeholder="Digite o nome">
 
         <label for="idade">Idade</label>
-        <input type="number" id="idade" name="idade" min = 1 placeholder="Digite a idade">
+        <input type="number" id="idade" name="idade" min=1 placeholder="Digite a idade">
         <br><br>
 
         <label for="nota1">Nota1</label>
@@ -94,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <br><br>
 
         <label for="frequencia">Frequencia</label>
-        <input type="number" name="frequencia" id= "frequencia" min=0 max=100 placeholder="Digite a Frequencia (%)" required>
+        <input type="number" name="frequencia" id="frequencia" min=0 max=100 placeholder="Digite a Frequencia (%)" required>
         <br><br>
 
         <button type="submit">Enviar</button>
@@ -103,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    <?php if ($situação != "") {?>
+    <?php if ($situação != "") { ?>
 
         <p><strong> Nome do Aluno: </strong> <?= $nome ?> </p>
         <p> <strong> Idade do Aluno: </strong> <?= $idade ?> </p>
@@ -111,46 +106,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li>
                 <p>Nota 1: <?= $nota1 ?> </p>
             </li>
-            
+
             <li>
                 <p>Nota 2: <?= $nota2 ?> </p>
             </li>
-            
-            
+
+
             <li>
                 <p>Nota 3: <?= $nota3 ?> </p>
             </li>
-                
+
             <li>
                 <p>Nota 4: <?= $nota4 ?> </p>
             </li>
-                
+
             <li>
                 <p>Nota 5: <?= $nota5 ?> </p>
             </li>
-            
+
 
         </ul>
-    
+
         <p> <strong> Media do Aluno: </strong><?= $media ?> </p>
-        <p> <strong> Situação: </strong> 
-            <span style="color: <?= ($situação == 'APROVADO' || $situação == 'APROVADO COM EXCELÊNCIA') ? 'green ' : (($situação == 'RECUPERAÇÃO') ? 'orange' : 'red') ?> "> 
-                 <?= $situação ?> 
+        <p> <strong> Situação: </strong>
+            <span style="color: <?= ($situação == 'APROVADO' || $situação == 'APROVADO COM EXCELÊNCIA') ? 'green ' : (($situação == 'RECUPERAÇÃO') ? 'orange' : 'red') ?> ">
+                <?= $situação ?>
             </span>
-    </p>
+        </p>
         <p> <strong> Frequencia do aluno: </strong><?= $frequencia ?> %</p>
 
     <?php } ?>
 
-    <?php if (($situação == "RECUPERAÇÃO" || $situação == "REPROVADO" ) && $frequencia >= 75 ) {  ?>
+    <?php if (($situação == "RECUPERAÇÃO" || $situação == "REPROVADO") && $frequencia >= 75) {  ?>
 
         <p>Faltaram <?= $resto ?> pontos para APROVAÇÃO!! </p>
 
     <?php } ?>
 
-    
 
-<br><br>
+
+    <br><br>
 
     <a href="index.php">Voltar</a>
 
