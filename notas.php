@@ -107,11 +107,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <p><strong> Nome do Aluno: </strong> <?= $nome ?> </p>
         <p> <strong> Idade do Aluno: </strong> <?= $idade ?> </p>
-        <p>Nota 1: <?= $nota1 ?> </p>
-        <p>Nota 2: <?= $nota2 ?> </p>
-        <p>Nota 3: <?= $nota3 ?> </p>
-        <p>Nota 4: <?= $nota4 ?> </p>
-        <p>Nota 5: <?= $nota5 ?> </p>
+        <ul>
+            <li>
+                <p>Nota 1: <?= $nota1 ?> </p>
+            </li>
+            
+            <li>
+                <p>Nota 2: <?= $nota2 ?> </p>
+            </li>
+            
+            
+            <li>
+                <p>Nota 3: <?= $nota3 ?> </p>
+            </li>
+                
+            <li>
+                <p>Nota 4: <?= $nota4 ?> </p>
+            </li>
+                
+            <li>
+                <p>Nota 5: <?= $nota5 ?> </p>
+            </li>
+            
+
+        </ul>
+    
         <p> <strong> Media do Aluno: </strong><?= $media ?> </p>
         <p> <strong> Situação: </strong> 
             <span style="color: <?= ($situação == 'APROVADO' || $situação == 'APROVADO COM EXCELÊNCIA') ? 'green ' : (($situação == 'RECUPERAÇÃO') ? 'orange' : 'red') ?> "> 
