@@ -37,12 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     elseif ($media >= 5 && $media < 7 && $frequencia >= 75) {
         $situação = "RECUPERAÇÃO";
         $resto = 7 - $media;
-        $restofre = 75 - $frequencia;
+
     } 
     else {
         $situação = "REPROVADO";
         $resto = 7 - $media;
-        $restofre = 75 - $frequencia;
+        
     }
 }
 ?>
@@ -118,13 +118,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php } ?>
 
-    <?php if ($situação == "RECUPERAÇÃO" || $situação == "REPROVADO" ){  ?>
+    <?php if (($situação == "RECUPERAÇÃO" || $situação == "REPROVADO" ) && $frequencia >= 75 ) {  ?>
 
         <p>Faltaram <?= $resto ?> pontos para APROVAÇÃO!! </p>
 
-        <p>REPROVADO por Frequencia faltam <?= $restofre ?> % de Frequencia</p>
-    
     <?php } ?>
+
+    
 
 <br><br>
 
