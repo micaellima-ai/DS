@@ -24,15 +24,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ($nota1 * 2) + ($nota2 * 3) + ($nota3 * 1) + ($nota4 * 1) + ($nota5 * 3)
     ) / 10;
 
-
-    if ($media >= 7) {
+    if($media = 10){
+        $situação = "APROVADO COM EXCELÊNCIA";
+    }
+    elseif($media >= 7) {
         $situação = "APROVADO";
-    } elseif ($media >= 5 && $media < 7) {
+    } 
+    elseif ($media >= 5 && $media < 7) {
         $situação = "RECUPERAÇÃO";
         $resto = 7 - $media;
-    } elseif($media = 10){
-        $situação = "APROVADO COM EXCELÊNCIA";
-    }else {
+    } 
+    else {
         $situação = "REPROVADO";
         $resto = 7 - $media;
     }
