@@ -106,7 +106,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Media do Aluno: <?= $media ?> </p>
         <p>Situação: <?= $situação ?> </p>
     <?php } ?>
+    <?php if ($situação == "RECUPERAÇÃO" || $situação == "REPROVADO"){  ?>
+        <p>Faltam <?= $resto ?> pontos para APROVAÇÃO!! </p>
 
+        <?php } ?>
 
     <br><br>
     <a href="index.php">Voltar</a>
