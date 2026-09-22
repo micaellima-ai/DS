@@ -4,6 +4,7 @@ $idade = 0;
 $media = 0;
 $situação = "";
 $resto = 0;
+$frequencia = 0;
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -17,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nota3 = $_POST["nota3"];
     $nota4 = $_POST["nota4"];
     $nota5 = $_POST["nota5"];
+    
 
 
 
@@ -24,13 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ($nota1 * 2) + ($nota2 * 3) + ($nota3 * 1) + ($nota4 * 1) + ($nota5 * 3)
     ) / 10;
 
-    if($media == 10){
+    if($media == 10 && $frequencia >= 75){
         $situação = "APROVADO COM EXCELÊNCIA";
     }
-    elseif($media >= 7) {
+    elseif($media >= 7 && $frequencia >= 75) {
         $situação = "APROVADO";
     } 
-    elseif ($media >= 5 && $media < 7) {
+    elseif ($media >= 5 && $media < 7 && $frequencia >= 75) {
         $situação = "RECUPERAÇÃO";
         $resto = 7 - $media;
     } 
@@ -87,15 +89,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="number" name="nota5" id="nota5" min=0 max=10 placeholder="Digite sua 5° Nota" required>
         <br><br>
 
+        <label for="frequencia">Frequencia</label>
+        <input type="number" name="frequencia" id= "frequencia" min=0 max=100 placeholder="Digite a Frequencia %" required>
+        <br><br>
+
         <button type="submit">Enviar</button>
 
     </form>
 
 
 
-    <?php 
-        if ($situação != "") {
-    ?>
+    <?php if ($situação != "") {?>
+
         <p> Nome do Aluno: <?= $nome ?> </p>
         <p> Idade do Aluno: <?= $idade ?> </p>
         <p>Nota 1: <?= $nota1 ?> </p>
@@ -105,14 +110,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Nota 5: <?= $nota5 ?> </p>
         <p>Media do Aluno: <?= $media ?> </p>
         <p>Situação: <?= $situação ?> </p>
+        <p>Frequencia do aluno: <?= $frequencia ?> %</p>
+
     <?php } ?>
+
     <?php if ($situação == "RECUPERAÇÃO" || $situação == "REPROVADO"){  ?>
-        <p>Faltam <?= $resto ?> pontos para APROVAÇÃO!! </p>
 
-        <?php } ?>
+        <p>Faltaram <?= $resto ?> pontos para APROVAÇÃO!! </p>
+        <p>Frequencia do aluno: <?= $frequencia ?> %</p>
 
-    <br><br>
+    <?php } ?>
+<br><br>
+
     <a href="index.php">Voltar</a>
+
 </body>
 
 </html>
