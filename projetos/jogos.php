@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nota = $_POST["nota"];
 
 
+    $sql_cadastro = "INSERT INTO lista_jogos (nome, genero, nota, ano) VALUES ('$nome', '$genero', '$nota', '$ano')";
     if ($pdo->exec($sql_cadastro)) {
         $resultado = "Jogo cadastrado!";
     } else {
@@ -62,7 +63,7 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <form method="POST">
         <h1>Cadastro de jogos</h1>
 
-        
+
         <label for="nome">Nome</label>
         <input type="text" name="nome" id="nome" placeholder="Digite o nome do jogo" required>
 
