@@ -12,6 +12,7 @@
         <li><a href="projetos/idade.php">Validação de Idade</a></li>
         <li><a href="projetos/notas.php">Atividade Notas</a></li>
         <li><a href="projetos/desafio.php">Desafio</a></li>
+        <li><a href="projetos/jogos.php">Cadastro de jogos</a></li>
 
     </ul>
   
