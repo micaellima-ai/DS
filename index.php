@@ -9,9 +9,9 @@
 <body>
     <h1>Escolha para onde IR</h1>
     <ul>
-        <li><a href="idade.php">Validação de Idade</a></li>
-        <li><a href="notas.php">Atividade Notas</a></li>
-        <li><a href="desafio.php">Desafio</a></li>
+        <li><a href="projetos/idade.php">Validação de Idade</a></li>
+        <li><a href="projetos/notas.php">Atividade Notas</a></li>
+        <li><a href="projetos/desafio.php">Desafio</a></li>
 
     </ul>
   
