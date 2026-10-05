@@ -22,13 +22,41 @@
             </ul>
         </nav>
 
-    <h1>Escolha para onde IR</h1>
-    <ul>
-        <li><a href="projetos/idade.php">Validação de Idade</a></li>
-        <li><a href="projetos/notas.php">Atividade Notas</a></li>
-        <li><a href="projetos/desafio.php">Desafio</a></li>
-        <li><a href="projetos/jogos.php">Cadastro de jogos</a></li>
-    </ul>
+<main>
+    <section id="inicio" class="inicio">
+        <div class="inicio-conteudo">
+        
+            <p class="saudacao">Olá! Eu sou</p>
+            
+            <h1>Micael Álvaro</h1>
+
+            <h2>Desenvolvedor de Sistemas</h2>
+
+            <p>
+            Sou estudante de Desenvolvimento de Sistemas, apaixonado por tecnologia
+            e programação. Tenho conhecimentos em HTML, CSS, JavaScript, C e Python,
+            e estou sempre em busca de novos aprendizados e desafios.
+            </p>
+
+    
+            <a href="#projetos" class="botao">
+                Ver meus Projetos
+            </a>
+        </div>
+    </section>
+
+
+    <section id="">
+
+
+
+
+
+
+    </section>    
+
+</main>
+
   
 </body>
 </html>
