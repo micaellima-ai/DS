@@ -8,18 +8,18 @@ $restofre = 0;
 
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-    $nome = $_POST["nome"];
-    $idade = $_POST["idade"];
+    $nome = $_GET["nome"];
+    $idade = $_GET["idade"];
 
 
-    $nota1 = $_POST["nota1"];
-    $nota2 = $_POST["nota2"];
-    $nota3 = $_POST["nota3"];
-    $nota4 = $_POST["nota4"];
-    $nota5 = $_POST["nota5"];
-    $frequencia = $_POST["frequencia"];
+    $nota1 = $_GET["nota1"];
+    $nota2 = $_GET["nota2"];
+    $nota3 = $_GET["nota3"];
+    $nota4 = $_GET["nota4"];
+    $nota5 = $_GET["nota5"];
+    $frequencia = $_GET["frequencia"];
 
 
 
@@ -52,14 +52,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="notas.css">
+    <link rel="stylesheet" href="css/notas.css">
     <title>Nota Aluno</title>
 </head>
 
 <body>
     <h1>Requisitos</h1>
 
-    <form method="POST">
+    <form method="GET">
 
         <label for="nome">Nome</label>
         <input type="text" id="nome" name="nome" placeholder="Digite o nome">
