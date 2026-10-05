@@ -125,7 +125,9 @@
                             <span>CSS</span>
                             <span>PHP</span>
                         </div>
-                        <a href="projetos/idade.php" class="link-projeto"></a>
+                        <a href="projetos/idade.php" class="link-projeto">
+                        Ver projeto ➙
+                        </a>
                     </div>
 
                 </div>
