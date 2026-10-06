@@ -50,7 +50,7 @@
 
             <section id="sobre" class="socao">
                 <div class="sobre-conteudo">
-                    <div class="fot">
+                    <div class="foto">
                         JS
                     </div>
                     <div class="sobre-texto">
