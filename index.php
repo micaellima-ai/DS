@@ -23,7 +23,7 @@
 
             </ul>
         </nav>
-
+    </header>
         <main>
             <section id="inicio" class="inicio">
                 <div class="inicio-conteudo">
