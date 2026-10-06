@@ -249,4 +249,30 @@ header {
 .tecnologias {
     display: flex;
     flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
 }
+
+.tecnologias span {
+    background-color: #dbeafe;
+    color: #1e40af;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* LINK DO PROJETO */
+
+.link-projeto {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-projeto:hover {
+    text-decoration: underline;
+}
+
+
+/* CONTATO */
