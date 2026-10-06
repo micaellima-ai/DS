@@ -35,7 +35,7 @@
                     <h2>Desenvolvedor de Sistemas</h2>
 
                     <p>
-                        Sou estudante de Desenvolvimento de Sistemas, apaixonado por tecnologia
+                        Sou estudante de Desenvolvimento de Sistemas, apaixonado pela Professora Helena 
                         e programação. Tenho conhecimentos em HTML, CSS, JavaScript, C e Python,
                         e estou sempre em busca de novos aprendizados e desafios.
                     </p>
