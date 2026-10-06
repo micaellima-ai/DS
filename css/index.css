@@ -167,6 +167,7 @@ header{
     border-radius: 50%;
     background-color: #2563eb;
     color: white;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -204,5 +205,10 @@ header{
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
+}
+
+.habilidade {
+    background-color: white;
+    
 }
 

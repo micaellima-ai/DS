@@ -48,7 +48,7 @@
             </section>
 
 
-            <section id="sobre" class="socao">
+            <section id="sobre" class="secao">
                 <div class="sobre-conteudo">
                     <div class="foto">
                         JS
