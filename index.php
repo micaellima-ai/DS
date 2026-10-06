@@ -372,7 +372,7 @@
         <a href="https://micael315.devlook.xyz">
             Micael Álvaro
         </a>
-        📌 2026
+        ● 2026
     </p>
 
 </footer>
