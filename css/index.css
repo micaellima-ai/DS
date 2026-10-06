@@ -1,14 +1,14 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: aliceblue;
     color: black;
@@ -17,7 +17,7 @@ body{
 
 
 
-header{
+header {
     background-color: black;
     position: sticky;
     z-index: 100;
@@ -97,23 +97,18 @@ header{
     margin-bottom: 20px;
 }
 
-.inicio-conteudo > p {
+.inicio-conteudo>p {
     max-width: 600px;
 }
 
 .botao {
     display: inline-block;
-
     margin-top: 30px;
     padding: 12px 25px;
-
     background-color: #2563eb;
     color: white;
-
     text-decoration: none;
-
     border-radius: 6px;
-
     font-weight: bold;
 }
 
@@ -121,11 +116,7 @@ header{
     background-color: #1d4ed8;
 }
 
-/* 
-========================
-        SEÇÕES 
-========================
-*/
+/*  SEÇÕES  */
 
 .secao {
     max-width: 1100px;
@@ -148,11 +139,7 @@ header{
 }
 
 
-/* 
-========================
-        SOBRE MIM
-========================
-*/
+/*  SOBRE MIM    */
 .sobre-conteudo {
     display: flex;
     align-items: center;
@@ -191,7 +178,7 @@ header{
     background-color: #e5e7eb;
 }
 
-.secao-destaque > * {
+.secao-destaque>* {
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
@@ -209,6 +196,21 @@ header{
 
 .habilidade {
     background-color: white;
-    
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.habilidade:hover {
+    transform: translateY(-3px);
+}
+
+/* PROJETOS */
+
+.projetos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
 }
 
