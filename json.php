@@ -71,7 +71,8 @@ $curso = "";
     <?php foreach($alunos as $aluno){ ?>
     
 
-        <h3><?= $aluno["aluno"] ?></h3>
+        <h3><?= $aluno["nome"] ?></h3>
+        
         <p>Idade: <?= $aluno["idade"]?></p>
         <p>Curso: <?= $aluno["curso"]?></p>
 
