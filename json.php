@@ -66,6 +66,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //  SALVAR NO ARQUIVO
         file_put_contents($caminho, $jsonAtualizado);
     }
+
+    if ($acao === "deletar") {
+        $nome = $_POST["nome"];
+
+        foreach($alunos as $posicao => $aluno){
+            if($aluno["nome"] === $nome){
+                unset($aluno[$posicao]);
+            }
+        }
+
+        $alunos= array_values($alunos);
+        
+    }
 }
 
 ?>
@@ -84,6 +97,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+
+    <!-- CADASTRAR -->
     <form method="POST">
 
         <label>Nome:</label>
@@ -100,9 +115,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
 
-
-    </form>
-
     <h2>Alunos Cadastrados</h2>
     <?php foreach ($alunos as $aluno) { ?>
 
@@ -113,6 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php  } ?>
 
+    <!-- ALTUALIZAR -->
     <h2>Atualizar</h2>
 
     <form method="POST">
@@ -128,7 +141,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <button type="submit" name="acao" value="atualizar">Atualizar</button>
 
+    </form>
 
+    <!-- DELETAR -->
+    <form method="POST">
+
+        <label>Nome:</label>
+        <input type="text" id="nome" name="nome">
+
+        <button type="submit" name="acao" value="deletar">Deletar</button>
+
+    </form>
 </body>
 
 </html>
