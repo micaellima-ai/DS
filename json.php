@@ -10,7 +10,7 @@
 
     // 4. CRIAR UM ALUNO
 
-    if($_SERVER["REQUEST_METHOD"] == 'POST'){
+    if($_SERVER["REQUEST_METHOD" == "POST"]){
         $novoAluno = [         
         "nome" => $_POST["nome"],
         "idade" => $_POST["idade"],
@@ -51,13 +51,13 @@
     <form method="POST">
 
     <label >Nome:</label>
-    <input type="text" name="nome">
+    <input type="text" id="nome" name="nome">
 
     <label >Idade:</label>
-    <input type="number" name="idade">
+    <input type="number" id="idade" name="idade">
 
     <label >Curso:</label>
-    <input type="text" name="curso">
+    <input type="text" id="curso" name="curso">
 
     <button type="submit">Enviar</button>
 
