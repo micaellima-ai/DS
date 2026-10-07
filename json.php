@@ -20,7 +20,7 @@ $curso = "";
         "idade" => $_POST["idade"],
         "curso" => $_POST["curso"]
         ];
-    }
+    
 
     // 5. ADICIONAR O ALUNO NO ARRAY
     $alunos[] = $novoAluno;
@@ -36,7 +36,7 @@ $curso = "";
 
 
     echo "DADOS REGISTRADOS EM dados.json";
-
+}
 
 ?>
 
