@@ -10,11 +10,13 @@
 
     // 4. CRIAR UM ALUNO
 
-    $novoAluno = [
-        "nome" => "Micael",
-        "idade" => 23,
-        "curso" => "Desenvolvimento de Sistemas"
-    ];
+    if($_SERVER["REQUEST_METHOD"] == 'POST'){
+        $novoAluno = [         
+        "nome" => $_POST["nome"],
+        "idade" => $_POST["idade"],
+        "curso" => $_POST["curso"]
+        ];
+    }
 
     // 5. ADICIONAR O ALUNO NO ARRAY
     $alunos[] = $novoAluno;
@@ -27,7 +29,11 @@
     // 7. SALVAR NO ARQUIVO
     file_put_contents($caminho, $jsonAtualizado);
 
+
+
     echo "DADOS REGISTRADOS EM dados.json";
+
+
 ?>
 
 
@@ -42,8 +48,21 @@
     <title>Document</title>
 </head>
 <body>
+    <form method="POST">
+
+    <label >Nome:</label>
+    <input type="text" name="nome">
+
+    <label >Idade:</label>
+    <input type="number" name="idade">
+
+    <label >Curso:</label>
+    <input type="text" name="curso">
+
+    <button type="submit">Enviar</button>
+
+    </form>
 
 
-    
 </body>
 </html>
