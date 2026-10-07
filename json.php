@@ -67,7 +67,9 @@ $curso = "";
 
     </form>
 
+    <h2>Alunos Cadastrados</h2>
     <?php foreach($alunos as $aluno){ ?>
+    
 
         <h3><?= $aluno["aluno"] ?></h3>
         <p>Idade: <?= $aluno["idade"]?></p>
