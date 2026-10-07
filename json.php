@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $alunos= array_values($alunos);
-        
+
     }
 }
 
@@ -144,6 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <!-- DELETAR -->
+     <h3>DELETAR</h3>
     <form method="POST">
 
         <label>Nome:</label>
