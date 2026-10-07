@@ -1,50 +1,83 @@
 <?php
+
 $nome = "";
 $genero = "";
 $ano = 0;
-$resultado = "";
 $nota = 0;
+$resultado = "";
+
+// Conexão com o banco
 require __DIR__ . "/../conexao.php";
-$sql = "CREATE TABLE IF NOT EXISTS lista_jogos ( 
-id INT AUTO_INCREMENT PRIMARY KEY, 
-nome VARCHAR(100) NOT NULL, 
-genero VARCHAR(50) NOT NULL, 
-nota INT NOT NULL, 
-ano INT NOT NULL 
+
+// Cria a tabela caso ela não exista
+$sql = "CREATE TABLE IF NOT EXISTS lista_jogos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    genero VARCHAR(50) NOT NULL,
+    nota INT NOT NULL,
+    ano INT NOT NULL
 )";
+
 $pdo->exec($sql);
+
+
+// Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $nome = $_POST["nome"];
     $genero = $_POST["genero"];
     $ano = $_POST["ano"];
     $nota = $_POST["nota"];
-    $sql_cadastro = "INSERT INTO lista_jogos (nome, genero, nota, ano) VALUES ('$nome', '$genero', '$nota', '$ano')";
-    if ($pdo->exec($sql_cadastro)) {
+
+    // Cadastra o jogo
+    $sql_cadastro = "INSERT INTO lista_jogos 
+        (nome, genero, nota, ano) 
+        VALUES (:nome, :genero, :nota, :ano)";
+
+    $stmt = $pdo->prepare($sql_cadastro);
+
+    if ($stmt->execute([
+        ":nome" => $nome,
+        ":genero" => $genero,
+        ":nota" => $nota,
+        ":ano" => $ano
+    ])) {
+
         $resultado = "Jogo cadastrado!";
     } else {
+
         $resultado = "Erro! Jogo não cadastrado";
     }
 }
+
+
+// Busca os jogos cadastrados
 $buscar = "SELECT * FROM lista_jogos";
+
 $stmt = $pdo->query($buscar);
-$jogos = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
+
+$jogos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="../css/jogos.css">
     <title>Cadastro de Jogos</title>
 
 </head>
 
 <body>
+
     <form method="POST">
 
         <h1>Cadastro de jogos</h1>
-
 
         <label for="nome">
             Nome
@@ -57,6 +90,8 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
             placeholder="Digite o nome do jogo"
             required>
 
+        <br>
+        <br>
 
         <label for="genero">
             Gênero
@@ -69,6 +104,8 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
             placeholder="Digite o gênero do jogo"
             required>
 
+        <br>
+        <br>
 
         <label for="nota">
             Nota
@@ -86,7 +123,6 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
         <br>
         <br>
 
-
         <label for="ano">
             Ano
         </label>
@@ -100,18 +136,21 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
             placeholder="Digite o ano do jogo"
             required>
 
+        <br>
+        <br>
 
         <button type="submit">
             Enviar
         </button>
 
-
         <?php if ($resultado != "") { ?>
 
-            <span style="color: <?= ($resultado == 'Jogo cadastrado!') ? 'green' : 'red' ?>; font-weight: bold;">
-
-                <?= $resultado ?>
-
+            <span
+                style="
+                    color: <?= ($resultado == 'Jogo cadastrado!') ? 'green' : 'red' ?>;
+                    font-weight: bold;
+                ">
+                <?= htmlspecialchars($resultado) ?>
             </span>
 
         <?php } ?>
@@ -124,7 +163,7 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
     </h2>
 
 
-    <table>
+    <table border="1">
 
         <tr>
 
@@ -150,11 +189,11 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
                 </td>
 
                 <td>
-                    <?= $jogo["nome"] ?>
+                    <?= htmlspecialchars($jogo["nome"]) ?>
                 </td>
 
                 <td>
-                    <?= $jogo["genero"] ?>
+                    <?= htmlspecialchars($jogo["genero"]) ?>
                 </td>
 
                 <td>
