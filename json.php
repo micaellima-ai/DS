@@ -10,7 +10,7 @@
 
     // 4. CRIAR UM ALUNO
 
-    if($_SERVER["REQUEST_METHOD" == "POST"]){
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
         $novoAluno = [         
         "nome" => $_POST["nome"],
         "idade" => $_POST["idade"],
