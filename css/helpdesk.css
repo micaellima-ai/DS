@@ -1,209 +1,220 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ==========================================
+   HELPDESK — SIGNATURE INTERFACE
+   Conceito: Corporate / Editorial / Premium
+   ========================================== */
+
+:root {
+    --hd-bg: #eef2f7;
+    --hd-surface: #ffffff;
+    --hd-ink: #152238;
+    --hd-muted: #64748b;
+    --hd-primary: #173b65;
+    --hd-accent: #0e9fba;
+    --hd-border: #dce4ee;
+    --hd-radius: 14px;
+    --hd-shadow: 0 12px 35px rgba(24, 43, 68, .07);
 }
 
+/* Base */
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #f1f5f9;
-    color: #334155;
-    padding: 30px;
+    background:
+        radial-gradient(circle at 90% 0%,
+            rgba(14, 159, 186, .07),
+            transparent 28rem),
+        var(--hd-bg);
+    color: var(--hd-ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* LAYOUT LADO A LADO */
+/* Estrutura */
 .layout-helpdesk {
-    display: grid;
-    grid-template-columns: 350px minmax(0, 1fr);
-    gap: 30px;
-    max-width: 1500px;
-    margin: 0 auto;
-    align-items: start;
+    max-width: 1600px;
+    grid-template-columns: minmax(280px, 330px) minmax(0, 1fr);
+    gap: 32px;
 }
 
-/* CADASTRO LATERAL */
+/* Painel lateral */
 .cadastro-lateral {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
-    position: sticky;
-    top: 20px;
+    background: var(--hd-surface);
+    border: 1px solid rgba(220, 228, 238, .9);
+    border-radius: var(--hd-radius);
+    padding: 28px;
+    box-shadow: var(--hd-shadow);
 }
 
 .cadastro-lateral h2 {
-    color: #1e3a8a;
-    font-size: 23px;
-    margin-bottom: 22px;
+    color: var(--hd-primary);
+    font-size: 22px;
+    font-weight: 750;
+    letter-spacing: -.6px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--hd-accent);
 }
 
-/* FORMULÁRIOS */
+/* Títulos */
+.conteudo-principal h2 {
+    color: var(--hd-ink);
+    font-size: clamp(24px, 2vw, 31px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.conteudo-principal h3 {
+    color: var(--hd-primary);
+    background: linear-gradient(110deg, #e1f4f8, #edf5fc);
+    border-left: 4px solid var(--hd-accent);
+    border-radius: 10px 10px 0 0;
+    padding: 17px 21px;
+    font-size: 17px;
+    font-weight: 750;
+}
+
+/* Formulários */
 form {
-    background: #ffffff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
-}
-
-.cadastro-lateral form {
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
+    border: 1px solid var(--hd-border);
+    border-radius: var(--hd-radius);
+    box-shadow: 0 5px 20px rgba(24, 43, 68, .035);
 }
 
 label {
-    display: block;
-    font-weight: 600;
-    font-size: 14px;
-    margin: 15px 0 6px;
+    color: #34465d;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .15px;
 }
 
 input[type="text"],
 select,
 textarea {
-    width: 100%;
-    padding: 11px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    color: var(--hd-ink);
     background: #f8fafc;
-    font: inherit;
-    font-size: 14px;
-    outline: none;
-    transition: 0.2s;
+    border: 1px solid #d6e0eb;
+    border-radius: 9px;
+    padding: 12px 13px;
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
 }
 
-input[type="text"]:focus,
-select:focus,
-textarea:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+input[type="text"]:hover,
+select:hover,
+textarea:hover {
+    border-color: #a9bfd2;
+}
+
+input[type="text"]:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(14, 159, 186, .15);
+    outline-offset: 1px;
+    border-color: var(--hd-accent);
     background: #fff;
+    box-shadow: none;
 }
 
-textarea {
-    min-height: 110px;
-    resize: vertical;
-}
-
-/* BOTÕES */
+/* Botões */
 button {
-    width: 100%;
-    margin-top: 15px;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #2563eb;
-    color: white;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.2s;
+    background: var(--hd-primary);
+    border: 1px solid transparent;
+    border-radius: 9px;
+    padding: 12px 16px;
+    font-weight: 700;
+    letter-spacing: .1px;
+    box-shadow: 0 4px 10px rgba(23, 59, 101, .12);
+    transition:
+        background .2s ease,
+        box-shadow .2s ease,
+        transform .2s ease;
 }
 
 button:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
+    background: #205486;
+    box-shadow: 0 7px 17px rgba(23, 59, 101, .18);
+    transform: translateY(-2px);
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(14, 159, 186, .4);
+    outline-offset: 3px;
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 button[value="deletar"] {
-    background: #dc2626;
+    background: #b42332;
+    box-shadow: none;
 }
 
 button[value="deletar"]:hover {
-    background: #b91c1c;
+    background: #921c29;
 }
 
-/* CONTEÚDO DIREITO */
-.conteudo-principal {
-    min-width: 0;
-}
-
-.conteudo-principal h2 {
-    color: #1e3a8a;
-    margin: 0 0 18px;
-    font-size: 24px;
-}
-
-.conteudo-principal h3 {
-    color: #1d4ed8;
-    background: #dbeafe;
-    padding: 15px 20px;
-    border-radius: 10px 10px 0 0;
-    margin-top: 25px;
-    font-size: 19px;
-}
-
+/* Conteúdo e relatórios */
 .conteudo-principal p {
-    background: #ffffff;
-    padding: 10px 20px;
-    overflow-wrap: anywhere;
+    color: #42536a;
+    background: var(--hd-surface);
+    padding: 12px 21px;
+    line-height: 1.75;
 }
 
-.conteudo-principal h3 + p {
-    padding-top: 16px;
+.res>p {
+    border-left: 3px solid var(--hd-accent);
+    border-radius: 0 9px 9px 0;
+    box-shadow: 0 4px 14px rgba(24, 43, 68, .035);
+    margin-bottom: 12px;
+    transition: border-color .2s ease, transform .2s ease;
 }
 
-.conteudo-principal h3 + p,
-.conteudo-principal p + p {
-    margin: 0;
+.res>p:hover {
+    border-left-color: var(--hd-primary);
 }
 
-/* FORMULÁRIOS DE ATUALIZAÇÃO E EXCLUSÃO */
+/* Blocos de atualização */
 .conteudo-principal form {
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    border-top: 1px solid #e2e8f0;
+    background: #fff;
+    padding: 22px;
+    border-right: 1px solid var(--hd-border);
+    border-bottom: 1px solid var(--hd-border);
+    border-left: 1px solid var(--hd-border);
 }
 
-.conteudo-principal form:last-of-type {
-    border-radius: 0 0 10px 10px;
-}
-
-.conteudo-principal form select {
-    max-width: 100%;
-}
-
-/* RELATÓRIO */
-.res > p {
-    margin-bottom: 10px;
-    border-left: 4px solid #2563eb;
-    border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-}
-
-/* SEPARADORES */
+/* Separadores */
 hr {
-    border: 0;
-    border-top: 1px solid #dbe3ef;
-    margin: 25px 0;
+    border-top-color: var(--hd-border);
+    margin: 30px 0;
 }
 
-/* LINK VOLTAR */
-body > a {
-    display: block;
-    width: fit-content;
-    margin: 25px auto 0;
-    color: #2563eb;
-    font-weight: 600;
-    text-decoration: none;
+/* Link de navegação */
+body>a {
+    color: var(--hd-primary);
+    transition: color .2s ease;
 }
 
-body > a:hover {
-    text-decoration: underline;
+body>a:hover {
+    color: var(--hd-accent);
 }
 
-/* RESPONSIVIDADE */
-@media (max-width: 900px) {
-    body {
-        padding: 18px;
+/* Acessibilidade: respeita preferência por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
     }
+}
 
+/* Tablet e celular */
+@media (max-width: 900px) {
     .layout-helpdesk {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
     }
 
     .cadastro-lateral {
@@ -212,15 +223,28 @@ body > a:hover {
 }
 
 @media (max-width: 480px) {
+
     body {
         padding: 12px;
     }
 
     .cadastro-lateral {
-        padding: 18px;
+        padding: 19px;
     }
 
     .conteudo-principal h2 {
-        font-size: 21px;
+        letter-spacing: -.5px;
+    }
+
+    .conteudo-principal h3 {
+        padding: 14px 16px;
+    }
+
+    .conteudo-principal form {
+        padding: 17px;
+    }
+
+    button {
+        min-height: 44px;
     }
 }
