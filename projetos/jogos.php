@@ -210,6 +210,9 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     </table>
 
+    <br><br>
+    <a href="../index.php"> ← Voltar</a>
+
 </body>
 
 </html>

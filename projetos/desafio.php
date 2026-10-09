@@ -147,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     <br><br>
 
-    <a href="../index.php">Voltar</a>
+    <a href="../index.php"> ← Voltar</a>
 
 </body>
 
