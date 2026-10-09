@@ -138,6 +138,7 @@ $relatorio = contarChamados();
 
     <hr>
 
+    <div class="res">
     <h2>Relatório de atendimentos</h2>
 
     <p>Total de chamados: <?= $relatorio["total"] ?></p>
@@ -206,6 +207,9 @@ $relatorio = contarChamados();
         <?php } ?>
 
     <?php } ?>
+
+    </div>
+
 
     <br><br>
     <a href="../index.php"> ← Voltar</a>
