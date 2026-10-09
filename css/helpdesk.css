@@ -194,3 +194,33 @@ body > a {
 body > a:hover {
     text-decoration: underline;
 }
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    body {
+        padding: 18px;
+    }
+
+    .layout-helpdesk {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .cadastro-lateral {
+        position: static;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .cadastro-lateral {
+        padding: 18px;
+    }
+
+    .conteudo-principal h2 {
+        font-size: 21px;
+    }
+}
