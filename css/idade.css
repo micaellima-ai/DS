@@ -1,174 +1,273 @@
+/* =========================================
+   VERIFICADOR DE IDADE
+   Design claro, moderno e profissional
+   ========================================= */
+
+   :root {
+    --fundo: #f4f8fc;
+    --branco: #ffffff;
+    --azul: #4a90d9;
+    --azul-hover: #357fc9;
+    --azul-claro: #eaf4ff;
+    --turquesa: #55b9b2;
+    --texto: #334155;
+    --texto-suave: #64748b;
+    --borda: #dce6f0;
+    --sombra: 0 15px 40px rgba(65, 105, 150, 0.10);
+}
+
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* PÁGINA */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #f6d365, #fda085);
     min-height: 100vh;
-
+    padding: 35px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 22px;
 
-    padding: 30px;
-    color: #333;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--texto);
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(85, 185, 178, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(74, 144, 217, 0.12),
+            transparent 30%
+        ),
+        var(--fundo);
 }
 
-
+/* CARTÃO DE IDENTIFICAÇÃO */
 .ti {
-    background-color: white;
     width: 100%;
-    max-width: 450px;
+    max-width: 460px;
+    padding: 27px 30px;
 
-    padding: 25px;
-    margin-bottom: 20px;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-top: 4px solid var(--turquesa);
+    border-radius: 16px;
+    box-shadow: var(--sombra);
 
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-
-    text-align: center;
+    overflow-wrap: anywhere;
 }
 
 .ti h1 {
-    font-size: 26px;
-    color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    color: #477fb5;
+    font-size: 25px;
+    font-weight: 750;
+    letter-spacing: -0.6px;
 }
 
 .ti p {
-    font-size: 18px;
-    color: #666;
+    color: var(--texto-suave);
+    font-size: 16px;
 }
 
-
+/* FORMULÁRIO */
 form {
-    background-color: white;
-
     width: 100%;
-    max-width: 450px;
-
+    max-width: 460px;
     padding: 30px;
-
-    border-radius: 15px;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 
     display: flex;
     flex-direction: column;
+    gap: 10px;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    box-shadow: var(--sombra);
 }
 
-
-form label {
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #444;
+/* RÓTULOS */
+label {
+    margin-top: 8px;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-form input {
+/* CAMPOS */
+input[type="text"],
+input[type="number"] {
     width: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
 
-    padding: 12px;
-    margin-bottom: 20px;
+    color: var(--texto);
+    background: #f8fbfe;
 
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid var(--borda);
+    border-radius: 9px;
 
-    font-size: 16px;
+    font: inherit;
+    font-size: 15px;
 
     outline: none;
-
-    transition: 0.3s;
+    transition: border-color 0.2s,
+                box-shadow 0.2s,
+                background 0.2s;
 }
 
-form input:focus {
-    border-color: #f08a5d;
-    box-shadow: 0 0 5px rgba(240, 138, 93, 0.4);
+input::placeholder {
+    color: #94a3b8;
 }
 
+input:hover {
+    border-color: #b8ccdf;
+}
 
-form button {
+input:focus {
+    border-color: var(--azul);
+    background: var(--branco);
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+/* BOTÃO */
+button {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 15px;
     padding: 13px;
 
+    color: var(--branco);
+    background: var(--azul);
+
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
 
-    background-color: #f08a5d;
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
 
     cursor: pointer;
+    box-shadow: 0 5px 12px rgba(74, 144, 217, 0.20);
 
-    transition: 0.3s;
+    transition: background 0.2s,
+                transform 0.2s,
+                box-shadow 0.2s;
 }
 
-form button:hover {
-    background-color: #d96b3f;
+button:hover {
+    background: var(--azul-hover);
     transform: translateY(-2px);
+    box-shadow: 0 8px 17px rgba(74, 144, 217, 0.25);
 }
 
+button:active {
+    transform: translateY(0);
+}
 
+button:focus-visible {
+    outline: 3px solid rgba(74, 144, 217, 0.35);
+    outline-offset: 3px;
+}
+
+/* RESULTADO */
 .res {
     width: 100%;
-    max-width: 450px;
+    max-width: 460px;
+    padding: 22px 25px;
 
-    margin-top: 20px;
-    padding: 20px;
+    background: #e9f8f4;
+    border: 1px solid #ccece3;
+    border-left: 5px solid var(--turquesa);
+    border-radius: 12px;
 
-    background-color: white;
+    box-shadow: 0 6px 18px rgba(65, 105, 150, 0.06);
 
-    border-radius: 15px;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-
-    text-align: center;
+    overflow-wrap: anywhere;
+    animation: aparecer 0.35s ease;
 }
 
 .res p {
-    color: #333;
-    font-size: 17px;
-    line-height: 1.6;
+    color: #28675f;
+    font-size: 15px;
+    line-height: 1.9;
 }
 
+/* ENTRADA SUAVE DO RESULTADO */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
 
-a {
-    margin-top: 20px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+/* LINK VOLTAR */
+body > a {
+    display: inline-block;
+    padding: 10px 17px;
+
+    color: #477fb5;
+    background: rgba(255, 255, 255, 0.8);
+
+    border: 1px solid var(--borda);
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 650;
     text-decoration: none;
 
-    background-color: #333;
-    color: white;
-
-    padding: 10px 20px;
-
-    border-radius: 8px;
-
-    transition: 0.3s;
+    transition: color 0.2s,
+                background 0.2s,
+                border-color 0.2s;
 }
 
-a:hover {
-    background-color: #555;
-    transform: translateY(-2px);
+body > a:hover {
+    color: var(--azul-hover);
+    background: var(--branco);
+    border-color: #b8d4ef;
 }
 
-
-@media (max-width: 500px) {
+/* CELULARES */
+@media (max-width: 480px) {
     body {
-        padding: 15px;
+        padding: 22px 14px;
+        gap: 16px;
     }
 
     .ti,
-    form,
-    .res {
-        max-width: 100%;
+    form {
+        padding: 22px 19px;
+        border-radius: 13px;
     }
 
     .ti h1 {
-        font-size: 22px;
+        font-size: 21px;
+    }
+
+    .res {
+        padding: 19px;
+    }
+}
+
+/* ACESSIBILIDADE */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
     }
 }

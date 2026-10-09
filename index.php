@@ -1,53 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="css/index.css">
-
     <title>Meu Portfólio</title>
-
 </head>
 
 <body>
 
     <!-- CABEÇALHO -->
     <header>
-
         <nav class="navbar">
-
             <h2 class="logo">
                 Meu Portfólio
             </h2>
 
             <ul class="menu">
-
                 <li><a href="#inicio">Início</a></li>
-
-                <li><a href="#sobre">Sobre</a> </li>
-
-                <li><a href="#habilidades">Habilidades</a> </li>
-
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
                 <li><a href="#projetos">Projetos</a></li>
-
                 <li><a href="#contato">Contato</a></li>
-
             </ul>
-
         </nav>
-
     </header>
-
 
     <main>
 
         <!-- INÍCIO -->
         <section id="inicio" class="inicio">
-
             <div class="inicio-conteudo">
 
                 <p class="saudacao">Olá! Eu sou</p>
@@ -65,9 +49,7 @@
                 <a href="#projetos" class="botao"> Ver meus Projetos </a>
 
             </div>
-
         </section>
-
 
         <!-- SOBRE MIM -->
         <section id="sobre" class="secao">
@@ -80,8 +62,9 @@
 
             <div class="sobre-conteudo">
 
+                <!-- FOTO ATUALIZADA -->
                 <div class="foto">
-                    JS
+                    <img src="img/minhafoto.jpeg" alt="Foto de Micael Álvaro">
                 </div>
 
                 <div class="sobre-texto">
@@ -109,11 +92,8 @@
                     </p>
 
                 </div>
-
             </div>
-
         </section>
-
 
         <!-- HABILIDADES -->
         <section id="habilidades" class="secao secao-destaque">
@@ -152,14 +132,12 @@
                     C
                 </div>
 
-                 <div class="habilidade">
+                <div class="habilidade">
                     JSON
                 </div>
 
             </div>
-
         </section>
-
 
         <!-- PROJETOS -->
         <section id="projetos" class="secao">
@@ -172,9 +150,7 @@
                 Alguns projetos desenvolvidos durante as aulas.
             </p>
 
-
             <div class="projetos-container">
-
 
                 <!-- PROJETO 01 -->
                 <div class="projeto-card">
@@ -214,7 +190,6 @@
 
                 </div>
 
-
                 <!-- PROJETO 02 -->
                 <div class="projeto-card">
 
@@ -252,7 +227,6 @@
                     </a>
 
                 </div>
-
 
                 <!-- PROJETO 03 -->
                 <div class="projeto-card">
@@ -307,10 +281,12 @@
                         Help Desk
                     </h3>
 
-                    <p> Sistema de gerenciamento de chamados técnicos, 
-                        desenvolvido para registrar, consultar, 
-                        atualizar e excluir solicitações de suporte, 
-                        com controle de status e relatório de atendimentos utilizando PHP e JSON. </p>
+                    <p>
+                        Sistema de gerenciamento de chamados técnicos,
+                        desenvolvido para registrar, consultar,
+                        atualizar e excluir solicitações de suporte,
+                        com controle de status e relatório de atendimentos utilizando PHP e JSON.
+                    </p>
 
                     <div class="tecnologias">
 
@@ -338,11 +314,8 @@
 
                 </div>
 
-
             </div>
-
         </section>
-
 
         <!-- CONTATO -->
         <section id="contato" class="secao secao-destaque">
@@ -355,9 +328,7 @@
                 Quer entrar em contato comigo?
             </p>
 
-
             <div class="contato-container">
-
 
                 <!-- WHATSAPP -->
                 <div class="contato-item">
@@ -372,7 +343,6 @@
 
                 </div>
 
-
                 <!-- GITHUB -->
                 <div class="contato-item">
 
@@ -385,7 +355,6 @@
                     </p>
 
                 </div>
-
 
                 <!-- LINKEDIN -->
                 <div class="contato-item">
@@ -400,13 +369,10 @@
 
                 </div>
 
-
             </div>
-
         </section>
 
     </main>
-
 
     <!-- RODAPÉ -->
     <footer class="footer">

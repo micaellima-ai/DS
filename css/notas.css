@@ -1,137 +1,302 @@
+/* =========================================
+   PAINEL ACADÊMICO — NOTAS DO ALUNO
+   Design claro, moderno e responsivo
+   ========================================= */
 
-button {
-  width: 100%;
-  padding: 12px;
-
-  background-color: #333;
-  color: white;
-
-  border: none;
-  border-radius: 6px;
-
-  font-size: 16px;
-  font-weight: 600;
-
-  cursor: pointer;
-  transition: 0.3s;
+   :root {
+    --fundo: #f4f8fc;
+    --branco: #ffffff;
+    --azul: #4a90d9;
+    --azul-hover: #357fc9;
+    --azul-escuro: #355c85;
+    --azul-claro: #eaf4ff;
+    --turquesa: #55b9b2;
+    --texto: #334155;
+    --texto-suave: #64748b;
+    --borda: #e1eaf3;
+    --verde: #21866f;
+    --verde-fundo: #e9f8f2;
+    --amarelo: #a96b12;
+    --amarelo-fundo: #fff6df;
+    --vermelho: #c74450;
+    --vermelho-fundo: #fff0f1;
+    --sombra: 0 10px 30px rgba(65, 105, 150, 0.08);
 }
 
-button:hover {
-  background-color: #555;
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* PÁGINA */
+body {
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
 
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    color: var(--texto);
+    line-height: 1.6;
 
-input {
-  transition: 0.3s;
+    background:
+        radial-gradient(
+            circle at 5% 5%,
+            rgba(85, 185, 178, 0.10),
+            transparent 28rem
+        ),
+        radial-gradient(
+            circle at 95% 90%,
+            rgba(74, 144, 217, 0.10),
+            transparent 30rem
+        ),
+        var(--fundo);
+}
+
+/* TÍTULO PRINCIPAL */
+body > h1 {
+    width: 100%;
+    max-width: 720px;
+    margin-bottom: 2px;
+
+    color: var(--azul-escuro);
+    font-size: clamp(25px, 4vw, 32px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+/* FORMULÁRIO */
+body > form {
+    width: 100%;
+    max-width: 720px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-top: 4px solid var(--turquesa);
+    border-radius: 16px;
+    box-shadow: var(--sombra);
+}
+
+/* RÓTULOS */
+label {
+    display: block;
+    margin: 10px 0 6px;
+
+    color: #475569;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+/* CAMPOS */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    min-height: 45px;
+    padding: 11px 13px;
+    margin-bottom: 10px;
+
+    color: var(--texto);
+    background: #f8fbfe;
+    border: 1px solid #dce6f0;
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+input:hover {
+    border-color: #b8ccdf;
 }
 
 input:focus {
-  border-color: #333;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    background: var(--branco);
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.14);
 }
 
+/* BOTÃO */
+button {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 18px;
+    padding: 13px 18px;
 
+    color: var(--branco);
+    background: var(--azul);
+    border: none;
+    border-radius: 10px;
 
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(74, 144, 217, 0.18);
+
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+button:hover {
+    background: var(--azul-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(74, 144, 217, 0.22);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(74, 144, 217, 0.35);
+    outline-offset: 3px;
+}
+
+/* RESULTADOS DO ALUNO */
 body > p {
-  width: 100%;
-  max-width: 500px;
+    width: 100%;
+    max-width: 720px;
+    padding: 13px 18px;
 
-  background-color: white;
+    color: #475569;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 9px;
 
-  padding: 10px 20px;
-  margin: 0;
-
-  color: #444;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+    box-shadow: 0 3px 10px rgba(65, 105, 150, 0.035);
 }
 
-
-
-body > p:first-of-type {
-  margin-top: 25px;
-  padding-top: 20px;
-
-  border-radius: 12px 12px 0 0;
+body > p strong {
+    color: var(--azul-escuro);
 }
 
+/* LISTA DE NOTAS */
+body > ul {
+    width: 100%;
+    max-width: 720px;
+    padding: 15px 20px 15px 42px;
 
+    color: var(--texto);
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+}
 
+body > ul li {
+    padding: 4px 0;
+    color: var(--azul);
+}
+
+body > ul li p {
+    color: var(--texto);
+    font-size: 14px;
+}
+
+/* MENSAGEM DOS PONTOS RESTANTES */
 body > p:last-of-type {
-  padding-bottom: 20px;
-
-  border-radius: 0 0 12px 12px;
+    overflow-wrap: anywhere;
 }
 
+/* LINK VOLTAR */
+body > a {
+    display: inline-block;
+    width: fit-content;
+    margin-top: 4px;
+    padding: 10px 17px;
 
+    color: #477fb5;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 9px;
 
-span {
-  display: inline-block;
+    font-size: 14px;
+    font-weight: 650;
+    text-decoration: none;
 
-  padding: 7px 12px;
-  margin-left: 5px;
-
-  border-radius: 6px;
-
-  font-weight: 700;
+    transition:
+        color 0.2s,
+        background 0.2s,
+        border-color 0.2s;
 }
 
-
-
-span[style*="green"] {
-  background-color: #d4edda;
-  color: #155724 !important;
-
-  border: 1px solid #b7dfc0;
+body > a:hover {
+    color: var(--azul-hover);
+    background: var(--azul-claro);
+    border-color: #c6dff7;
 }
 
+/* TABLETS */
+@media (max-width: 768px) {
+    body {
+        padding: 28px 17px;
+        gap: 18px;
+    }
 
-
-span[style*="orange"] {
-  background-color: #fff3cd;
-  color: #856404 !important;
-
-  border: 1px solid #ffe69c;
+    body > form {
+        padding: 24px;
+    }
 }
 
+/* CELULARES */
+@media (max-width: 480px) {
+    body {
+        padding: 22px 12px;
+        gap: 15px;
+    }
 
+    body > h1 {
+        font-size: 25px;
+    }
 
-span[style*="red"] {
-  background-color: #f8d7da;
-  color: #721c24 !important;
+    body > form {
+        padding: 20px 16px;
+        border-radius: 13px;
+    }
 
-  border: 1px solid #f1b0b7;
+    body > p {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+
+    body > ul {
+        padding-left: 35px;
+    }
+
+    button {
+        min-height: 46px;
+    }
 }
 
-
-
-a {
-  margin-top: 20px;
-
-  color: #333;
-  text-decoration: none;
-
-  font-weight: 600;
-
-  transition: 0.3s;
-}
-
-a:hover {
-  color: #666;
-  text-decoration: underline;
-}
-
-
-
-@media (max-width: 600px) {
-  body {
-    padding: 25px 15px;
-  }
-
-  form {
-    padding: 20px;
-  }
-
-  body > p {
-    max-width: 100%;
-  }
+/* ACESSIBILIDADE */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
 }

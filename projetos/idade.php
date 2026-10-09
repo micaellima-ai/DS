@@ -1,17 +1,22 @@
 <?php
 $nome = "";
-$idade = 0;
+$idade = "";
 $resultado = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST["nome"];
-    $idade = $_POST["idade"];
-}
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nome = trim($_POST["nome"] ?? "");
+    $idadeInformada = $_POST["idade"] ?? "";
 
-if ($idade >= 18) {
-    $resultado = "Sim";
-} else {
-    $resultado = "Não";
+    if (
+        $nome !== "" &&
+        $idadeInformada !== "" &&
+        filter_var($idadeInformada, FILTER_VALIDATE_INT) !== false &&
+        (int)$idadeInformada >= 0 &&
+        (int)$idadeInformada <= 130
+    ) {
+        $idade = (int)$idadeInformada;
+        $resultado = $idade >= 18 ? "Sim" : "Não";
+    }
 }
 ?>
 <!DOCTYPE html>

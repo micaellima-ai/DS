@@ -1,138 +1,339 @@
+/* =========================================
+   GAME LIBRARY — CADASTRO DE JOGOS
+   Design claro, moderno e profissional
+   ========================================= */
 
+   :root {
+    --fundo: #f4f8fc;
+    --branco: #ffffff;
+    --azul: #4a90d9;
+    --azul-hover: #357fc9;
+    --azul-escuro: #355c85;
+    --azul-claro: #eaf4ff;
+    --turquesa: #55b9b2;
+    --texto: #334155;
+    --texto-suave: #64748b;
+    --borda: #e1eaf3;
+    --verde: #21866f;
+    --vermelho: #d95762;
+    --sombra: 0 10px 30px rgba(65, 105, 150, 0.08);
+}
+
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* PÁGINA */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #0f172a;
-    color: #f8fafc;
-    padding: 40px 20px;
+    min-height: 100vh;
+    padding: 40px 24px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--texto);
+
+    background:
+        radial-gradient(
+            circle at 5% 5%,
+            rgba(85, 185, 178, 0.10),
+            transparent 28rem
+        ),
+        radial-gradient(
+            circle at 95% 90%,
+            rgba(74, 144, 217, 0.10),
+            transparent 30rem
+        ),
+        var(--fundo);
 }
 
-form {
-    max-width: 600px;
-    margin: 0 auto 40px;
-    background-color: #1e293b;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-h1 {
-    text-align: center;
-    color: #38bdf8;
-    margin-bottom: 30px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #cbd5e1;
-}
-
-input {
+/* FORMULÁRIO DE CADASTRO */
+body > form {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 2px solid #334155;
-    border-radius: 8px;
-    background-color: #0f172a;
-    color: white;
-    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 38px;
+    padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-top: 4px solid var(--turquesa);
+    border-radius: 17px;
+    box-shadow: var(--sombra);
+}
+
+/* TÍTULO DO FORMULÁRIO */
+form h1 {
+    margin-bottom: 24px;
+    color: var(--azul-escuro);
+    font-size: 27px;
+    font-weight: 750;
+    letter-spacing: -0.7px;
+}
+
+/* RÓTULOS */
+label {
+    margin: 0 0 7px;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+/* CAMPOS */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    min-height: 46px;
+    margin-bottom: 19px;
+    padding: 12px 14px;
+
+    color: var(--texto);
+    background: #f8fbfe;
+    border: 1px solid #dce6f0;
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 14px;
     outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+input:hover {
+    border-color: #b8ccdf;
 }
 
 input:focus {
-    border-color: #38bdf8;
+    background: var(--branco);
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.14);
 }
 
+/* BOTÃO CADASTRAR */
 button {
     width: 100%;
-    padding: 13px;
+    min-height: 48px;
+    margin-top: 2px;
+    padding: 13px 18px;
+
+    color: var(--branco);
+    background: var(--azul);
     border: none;
-    border-radius: 8px;
-    background-color: #38bdf8;
-    color: #0f172a;
-    font-size: 16px;
-    font-weight: bold;
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
     cursor: pointer;
-    transition: 0.3s;
+    box-shadow: 0 5px 12px rgba(74, 144, 217, 0.18);
+
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
 }
 
 button:hover {
-    background-color: #0ea5e9;
+    background: var(--azul-hover);
     transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(74, 144, 217, 0.22);
 }
 
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(74, 144, 217, 0.35);
+    outline-offset: 3px;
+}
+
+/* MENSAGEM DE RESULTADO DO PHP */
 form span {
     display: block;
-    text-align: center;
-    margin-top: 20px;
+    margin-top: 17px;
+    padding: 12px 14px;
+
+    background: #e9f8f2;
+    border: 1px solid #ccece0;
+    border-left: 4px solid var(--verde);
+    border-radius: 8px;
+
+    color: var(--verde) !important;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
 }
 
-h2 {
-    max-width: 1000px;
-    margin: 0 auto 20px;
-    color: #38bdf8;
-}
-
-table {
+/* TÍTULO DA LISTA */
+body > h2 {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1100px;
+    margin: 0 auto 18px;
+
+    color: var(--azul-escuro);
+    font-size: 25px;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+}
+
+/* TABELA */
+body > table {
+    width: 100%;
+    max-width: 1100px;
     margin: 0 auto;
-    border-collapse: collapse;
-    background-color: #1e293b;
-    border-radius: 10px;
+
+    border: 1px solid var(--borda) !important;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    background: var(--branco);
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--sombra);
 }
 
-th {
-    background-color: #0284c7;
-    color: white;
-    padding: 15px;
+/* CABEÇALHO */
+table th {
+    padding: 16px 18px;
+    background: var(--azul-claro);
+    color: var(--azul-escuro);
+
+    font-size: 13px;
+    font-weight: 750;
     text-align: left;
+
+    border: none;
+    border-bottom: 1px solid var(--borda);
 }
 
-td {
-    padding: 14px 15px;
-    border-bottom: 1px solid #334155;
-    color: #e2e8f0;
+/* CÉLULAS */
+table td {
+    padding: 15px 18px;
+    color: #475569;
+    font-size: 14px;
+
+    border: none;
+    border-bottom: 1px solid #edf1f6;
+
+    overflow-wrap: anywhere;
 }
 
-tr:hover td {
-    background-color: #273449;
+/* LINHAS ALTERNADAS */
+table tbody tr:nth-child(even),
+table tr:nth-child(even) {
+    background: #f9fbfe;
 }
 
-tr:last-child td {
+/* EFEITO AO PASSAR O MOUSE */
+table tr:hover td {
+    background: #f0f7ff;
+}
+
+/* REMOVE A BORDA DA ÚLTIMA LINHA */
+table tr:last-child td {
     border-bottom: none;
 }
 
+/* LINK VOLTAR */
+body > a {
+    display: block;
+    width: fit-content;
+    margin: 28px auto 0;
+    padding: 11px 18px;
 
+    color: #477fb5;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 9px;
 
+    font-size: 14px;
+    font-weight: 650;
+    text-decoration: none;
 
+    transition:
+        color 0.2s,
+        background 0.2s,
+        border-color 0.2s;
+}
 
+body > a:hover {
+    color: var(--azul-hover);
+    background: var(--azul-claro);
+    border-color: #c6dff7;
+}
 
-@media (max-width: 700px) {
-
+/* TABLETS */
+@media (max-width: 768px) {
     body {
-        padding: 20px 10px;
+        padding: 26px 18px;
     }
 
-    form {
-        padding: 20px;
+    body > form {
+        padding: 25px;
     }
 
-    table {
-        font-size: 14px;
+    body > h2 {
+        font-size: 22px;
     }
 
-    th,
-    td {
-        padding: 10px 8px;
+    table th,
+    table td {
+        padding: 12px;
+    }
+}
+
+/* CELULARES */
+@media (max-width: 520px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    body > form {
+        padding: 21px 17px;
+        border-radius: 13px;
+    }
+
+    form h1 {
+        font-size: 23px;
+    }
+
+    /* Permite rolar a tabela horizontalmente */
+    body > table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    table th,
+    table td {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    body > h2 {
+        font-size: 21px;
+    }
+}
+
+/* ACESSIBILIDADE */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 }
