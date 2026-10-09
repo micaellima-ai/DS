@@ -157,35 +157,17 @@ $relatorio = contarChamados();
 
             <h3>Chamado nº <?= $posicao + 1 ?></h3>
 
-            <p>
-                <strong>Solicitante:</strong>
-                <?= htmlspecialchars($chamado["nome"], ENT_QUOTES, "UTF-8") ?>
-            </p>
+            <p><strong>Solicitante:</strong><?= htmlspecialchars($chamado["nome"], ENT_QUOTES, "UTF-8") ?></p>
 
-            <p>
-                <strong>Setor:</strong>
-                <?= htmlspecialchars($chamado["setor"], ENT_QUOTES, "UTF-8") ?>
-            </p>
+            <p><strong>Setor:</strong><?= htmlspecialchars($chamado["setor"], ENT_QUOTES, "UTF-8") ?></p>
 
-            <p>
-                <strong>Equipamento:</strong>
-                <?= htmlspecialchars($chamado["equipamento"], ENT_QUOTES, "UTF-8") ?>
-            </p>
+            <p><strong>Equipamento:</strong><?= htmlspecialchars($chamado["equipamento"], ENT_QUOTES, "UTF-8") ?> </p>
 
-            <p>
-                <strong>Descrição:</strong>
-                <?= htmlspecialchars($chamado["descricao"], ENT_QUOTES, "UTF-8") ?>
-            </p>
+            <p><strong>Descrição:</strong><?= htmlspecialchars($chamado["descricao"], ENT_QUOTES, "UTF-8") ?></p>
 
-            <p>
-                <strong>Prioridade:</strong>
-                <?= htmlspecialchars($chamado["prioridade"], ENT_QUOTES, "UTF-8") ?>
-            </p>
+            <p><strong>Prioridade:</strong><?= htmlspecialchars($chamado["prioridade"], ENT_QUOTES, "UTF-8") ?></p>
 
-            <p>
-                <strong>Status:</strong>
-                <?= htmlspecialchars($chamado["status"], ENT_QUOTES, "UTF-8") ?>
-            </p>
+            <p><strong>Status:</strong><?= htmlspecialchars($chamado["status"], ENT_QUOTES, "UTF-8") ?></p>
 
             <!-- ATUALIZAR STATUS -->
             <form method="POST">

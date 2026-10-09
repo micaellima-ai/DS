@@ -26,25 +26,15 @@
 
             <ul class="menu">
 
-                <li>
-                    <a href="#inicio">Início</a>
-                </li>
+                <li><a href="#inicio">Início</a></li>
 
-                <li>
-                    <a href="#sobre">Sobre</a>
-                </li>
+                <li><a href="#sobre">Sobre</a> </li>
 
-                <li>
-                    <a href="#habilidades">Habilidades</a>
-                </li>
+                <li><a href="#habilidades">Habilidades</a> </li>
 
-                <li>
-                    <a href="#projetos">Projetos</a>
-                </li>
+                <li><a href="#projetos">Projetos</a></li>
 
-                <li>
-                    <a href="#contato">Contato</a>
-                </li>
+                <li><a href="#contato">Contato</a></li>
 
             </ul>
 
@@ -60,17 +50,11 @@
 
             <div class="inicio-conteudo">
 
-                <p class="saudacao">
-                    Olá! Eu sou
-                </p>
+                <p class="saudacao">Olá! Eu sou</p>
 
-                <h1>
-                    Micael Álvaro
-                </h1>
+                <h1>Micael Álvaro</h1>
 
-                <h2>
-                    Desenvolvedor de Sistemas
-                </h2>
+                <h2>Desenvolvedor de Sistemas</h2>
 
                 <p>
                     Sou estudante de Desenvolvimento de Sistemas, apaixonado por tecnologia
@@ -78,9 +62,7 @@
                     e estou sempre em busca de novos aprendizados e desafios.
                 </p>
 
-                <a href="#projetos" class="botao">
-                    Ver meus Projetos
-                </a>
+                <a href="#projetos" class="botao"> Ver meus Projetos </a>
 
             </div>
 
@@ -90,9 +72,7 @@
         <!-- SOBRE MIM -->
         <section id="sobre" class="secao">
 
-            <h2 class="titulo-secao">
-                Sobre mim
-            </h2>
+            <h2 class="titulo-secao"> Sobre mim </h2>
 
             <p class="subtitulo-secao">
                 Conheça um pouco mais sobre mim
@@ -307,6 +287,48 @@
                     </div>
 
                     <a href="projetos/jogos.php" class="link-projeto">
+                        Ver projeto ➙
+                    </a>
+
+                </div>
+
+                <!-- PROJETO 04 -->
+                <div class="projeto-card">
+
+                    <div class="projeto-numero">
+                        04
+                    </div>
+
+                    <h3>
+                        Help Desk
+                    </h3>
+
+                    <p> Sistema de gerenciamento de chamados técnicos, 
+                        desenvolvido para registrar, consultar, 
+                        atualizar e excluir solicitações de suporte, 
+                        com controle de status e relatório de atendimentos utilizando PHP e JSON. </p>
+
+                    <div class="tecnologias">
+
+                        <span>
+                            HTML
+                        </span>
+
+                        <span>
+                            CSS
+                        </span>
+
+                        <span>
+                            PHP
+                        </span>
+
+                        <span>
+                            JSON
+                        </span>
+
+                    </div>
+
+                    <a href="projetos/helpdesk.php" class="link-projeto">
                         Ver projeto ➙
                     </a>
 
