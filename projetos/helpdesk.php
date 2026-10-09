@@ -1,7 +1,5 @@
 <?php 
-include 'helpdesk-func.php' ;
-
-require __DIR__ . "/helpdesk.php";
+    require_once "/helpdesk.php";
 
 ?>
 
