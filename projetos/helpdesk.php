@@ -101,7 +101,7 @@ $relatorio = contarChamados();
             <option value="Administrativo">Administrativo</option>
             <option value="Logística">Logística</option>
             <option value="Financeiro">Financeiro</option>
-            <option value="Enfermagem">Enfermagem</option>
+            <option value="Enfermagem">Enfermaria</option>
             <option value="TI">TI</option>
         </select>
         <br><br>
