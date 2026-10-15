@@ -3,7 +3,7 @@
 // READ - ler todos os chamados
 function lerChamados()
 {
-    $arquivo = __DIR__ . "/../dados/chamados.json";
+    $arquivo = __DIR__ . "./chamados.json";
 
     if (!file_exists($arquivo)) {
         file_put_contents($arquivo, "[]");
