@@ -82,6 +82,7 @@
 
                 <div class="foto">
                     JS
+                    
                 </div>
 
                 <div class="sobre-texto">
