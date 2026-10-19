@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $acao = $_POST["acao"] ?? "";
 
     if ($acao === "cadastrar") {
-        $sucesso = cadastrarChamado(
+        $sucesso = cadastrarChamados(
             $_POST["nome"] ?? "",
             $_POST["setor"] ?? "",
             $_POST["equipamento"] ?? "",
