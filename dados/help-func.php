@@ -120,11 +120,11 @@
 
         <h2>Lista de chamados</h2>
 
-        <?php // if (count($chamados) === 0) { ?>
+        <?php  if (count($chamados) === 0) { ?>
 
             <p>Nenhum chamado cadastrado.</p>
 
-        <?php // } else { ?>
+        <?php  } else { ?>
 
             <?php  foreach ($chamados as $posicao => $chamado) { ?>
 
@@ -176,7 +176,7 @@
 
             <?php } ?>
 
-        <?php // } ?>
+        <?php  } ?>
 
     </div>
 
