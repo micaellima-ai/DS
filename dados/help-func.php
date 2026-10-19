@@ -1,6 +1,6 @@
 <?php
 
-    require_once "funcoes-help.php";
+    require_once __DIR__ . "/funcoes-help.php";
 
     $mensagem = "";
 
