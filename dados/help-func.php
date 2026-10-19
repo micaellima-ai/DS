@@ -2,48 +2,48 @@
 
 // require_once __DIR__ . "/funcoes-help.php";
 
-// $mensagem = "";
+$mensagem = "";
 
-// //identificar a operação solicitada
-// if ($_SERVER["REQUEST_METHOD"] === "POST") {
-//     $acao = $_POST["acao"] ?? "";
+//identificar a operação solicitada
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $acao = $_POST["acao"] ?? "";
 
-//     if ($acao === "cadastrar") {
-//         $sucesso = cadastrarChamado(
-//             $_POST["nome"] ?? "",
-//             $_POST["setor"] ?? "",
-//             $_POST["equipamento"] ?? "",
-//             $_POST["descricao"] ?? "",
-//             $_POST["prioridade"] ?? ""
-//         );
-//         $mensagem = $sucesso ? "Chamado cadastrado com sucesso!" : "Erro ao cadastrar. Verifique os dados.";
-//     }
+    if ($acao === "cadastrar") {
+        $sucesso = cadastrarChamado(
+            $_POST["nome"] ?? "",
+            $_POST["setor"] ?? "",
+            $_POST["equipamento"] ?? "",
+            $_POST["descricao"] ?? "",
+            $_POST["prioridade"] ?? ""
+        );
+        $mensagem = $sucesso ? "Chamado cadastrado com sucesso!" : "Erro ao cadastrar. Verifique os dados.";
+    }
 
-//     if ($acao === "atualizar") {
-//         // O (INT) é uma conversão de tipo, também chamada de type casting.
-//         // Ele tenta transformar o valor em um numero inteiro
-//         $sucesso = atualizarChamado(
-//             (int) ($_POST["posicao"] ?? -1),
-//             $_POST["status"] ?? ""
-//         );
-//         $mensagem = $sucesso ? "Status atualizado!" : "Não foi possível atualizar";
-//     }
+    if ($acao === "atualizar") {
+        // O (INT) é uma conversão de tipo, também chamada de type casting.
+        // Ele tenta transformar o valor em um numero inteiro
+        $sucesso = atualizarChamado(
+            (int) ($_POST["posicao"] ?? -1),
+            $_POST["status"] ?? ""
+        );
+        $mensagem = $sucesso ? "Status atualizado!" : "Não foi possível atualizar";
+    }
 
-//     if ($acao === "excluir") {
-//         $sucesso = excluirChamado((int) ($_POST["posicao"] ?? -1));
+    if ($acao === "excluir") {
+        $sucesso = excluirChamado((int) ($_POST["posicao"] ?? -1));
 
-//         $mensagem = $sucesso ? "Chamado exluído!" : "Não foi possível excluir";
-//     }
-// }
+        $mensagem = $sucesso ? "Chamado exluído!" : "Não foi possível excluir";
+    }
+}
 
-// $chamados = lerChamados();
-// $relatorio = gerarChamados();
+$chamados = lerChamados();
+$relatorio = gerarChamados();
 
-// //Evitar exibir HTML enviado pelo usuário
-// function escapar($valor)
-// {
-//     return htmlspecialchars((string) $valor, ENT_QUOTES, "UTF-8");
-// }
+//Evitar exibir HTML enviado pelo usuário
+function escapar($valor)
+{
+    return htmlspecialchars((string) $valor, ENT_QUOTES, "UTF-8");
+}
 
 ?>
 
