@@ -22,7 +22,7 @@ function lerChamados()
 // SALVAR os chamados no JSON 
 function salvarChamados($chamados)
 {
-    $arquivo = __DIR__ . "/../dados/chamados.json";
+    $arquivo = __DIR__ . "/chamads.json";
 
     return file_put_contents(
         $arquivo,
