@@ -107,6 +107,7 @@ function escapar($valor)
     </form>
 
     <hr>
+    <h2><?= $mensagem ?> </h2>
 
     <div class="res">
         <h2>Relatório de atendimentos</h2>
