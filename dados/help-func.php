@@ -8,16 +8,16 @@ $mensagem = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $acao = $_POST["acao"] ?? "";
 
-    // if ($acao === "cadastrar") {
-    //     $sucesso = cadastrarChamado(
-    //         $_POST["nome"] ?? "",
-    //         $_POST["setor"] ?? "",
-    //         $_POST["equipamento"] ?? "",
-    //         $_POST["descricao"] ?? "",
-    //         $_POST["prioridade"] ?? ""
-    //     );
-    //     $mensagem = $sucesso ? "Chamado cadastrado com sucesso!" : "Erro ao cadastrar. Verifique os dados.";
-    // }
+    if ($acao === "cadastrar") {
+        // $sucesso = cadastrarChamado(
+        //     $_POST["nome"] ?? "",
+        //     $_POST["setor"] ?? "",
+        //     $_POST["equipamento"] ?? "",
+        //     $_POST["descricao"] ?? "",
+        //     $_POST["prioridade"] ?? ""
+        // );
+        $mensagem = $sucesso ? "Chamado cadastrado com sucesso!" : "Erro ao cadastrar. Verifique os dados.";
+    }
 
     if ($acao === "atualizar") {
         // O (INT) é uma conversão de tipo, também chamada de type casting.
