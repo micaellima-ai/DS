@@ -36,9 +36,9 @@ function cadastrarChamados($nome, $setor, $equipamento, $descricao, $prioridade)
     if (trim($nome) === "" || trim($descricao) === "") {
         return false;
     }
-
+        echo "debug 1";
     $chamados = lerChamados();
-
+        echo "debug 2";
     $novoChamado = [
         "nome" => trim($nome),
         "setor" => ($setor),
@@ -47,7 +47,7 @@ function cadastrarChamados($nome, $setor, $equipamento, $descricao, $prioridade)
         "prioridade" => ($prioridade),
         "status" => "Aberto"
     ];
-
+        echo "debug 3";
     $chamados[] = $novoChamado;
 
     return salvarChamados($chamados);
@@ -73,7 +73,7 @@ function atualizarChamados($posicao, $novoStatus)
     if (!in_array($novoStatus, $statusPermitidos, true)) {
         return false;
     }
-
+        
     $chamados[$posicao]["status"] = $novoStatus;
     return salvarChamados($chamados);
 }
