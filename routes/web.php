@@ -5,7 +5,17 @@
 
 
     return [
+        'GET' => [
+            'portifolio' => [],
+            'helpdesk' => [],
+            'jogos' => [],
+            'idade' => [],
+            'notas' => []
+        ],
         
+        'POST' => [
+            'helpdesk' =>[]
+        ]
 
     ];
 ?>
