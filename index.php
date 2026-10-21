@@ -81,8 +81,7 @@
             <div class="sobre-conteudo">
 
                 <div class="foto">
-                    JS
-                    
+                    <img src="../img/minhafoto.jpeg" alt="Minha foto">
                 </div>
 
                 <div class="sobre-texto">
@@ -153,7 +152,7 @@
                     C
                 </div>
 
-                 <div class="habilidade">
+                <div class="habilidade">
                     JSON
                 </div>
 
@@ -308,9 +307,9 @@
                         Help Desk
                     </h3>
 
-                    <p> Sistema de gerenciamento de chamados técnicos, 
-                        desenvolvido para registrar, consultar, 
-                        atualizar e excluir solicitações de suporte, 
+                    <p> Sistema de gerenciamento de chamados técnicos,
+                        desenvolvido para registrar, consultar,
+                        atualizar e excluir solicitações de suporte,
                         com controle de status e relatório de atendimentos utilizando PHP e JSON. </p>
 
                     <div class="tecnologias">
