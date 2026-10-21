@@ -21,5 +21,5 @@
 
 
     //
-    $controller->$acao;
+    $controller->$acao();
 ?>
