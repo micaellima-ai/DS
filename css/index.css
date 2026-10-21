@@ -732,3 +732,222 @@ a:focus-visible {
         transition-duration: 0.01ms !important;
     }
 }
+
+
+
+/* ========================================
+   TELAS GRANDES - MONITORES
+======================================== */
+
+@media (min-width: 1400px) {
+    .inicio {
+        padding-top: 140px;
+        padding-bottom: 140px;
+    }
+
+    .secao {
+        padding-top: 110px;
+        padding-bottom: 110px;
+    }
+}
+
+/* ========================================
+   NOTEBOOKS E TABLETS HORIZONTAIS
+======================================== */
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .menu {
+        gap: 18px;
+    }
+
+    .sobre-conteudo {
+        gap: 32px;
+    }
+
+    .projetos-container {
+        gap: 18px;
+    }
+
+    .projeto-card {
+        padding: 24px;
+    }
+}
+
+/* ========================================
+   TABLETS VERTICAIS E TELAS MÉDIAS
+======================================== */
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 20px;
+    }
+
+    .inicio {
+        min-height: auto;
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+    .inicio h1 {
+        letter-spacing: -2px;
+    }
+
+    .sobre-conteudo {
+        gap: 26px;
+    }
+
+    .foto {
+        flex-basis: 250px;
+    }
+
+    .projetos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contato-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ========================================
+   CELULARES
+======================================== */
+
+@media (max-width: 600px) {
+    html {
+        scroll-padding-top: 140px;
+    }
+
+    .navbar {
+        padding: 16px;
+    }
+
+    .menu {
+        gap: 12px 16px;
+    }
+
+    .menu a {
+        font-size: 0.82rem;
+    }
+
+    .inicio {
+        padding: 75px 20px;
+    }
+
+    .inicio h1 {
+        font-size: clamp(2.3rem, 10vw, 3.5rem);
+        letter-spacing: -1.5px;
+        overflow-wrap: anywhere;
+    }
+
+    .inicio h2 {
+        font-size: clamp(1.1rem, 5vw, 1.4rem);
+    }
+
+    .inicio-detalhe {
+        right: -10%;
+        max-width: 100%;
+        font-size: clamp(5rem, 23vw, 7rem);
+    }
+
+    .secao,
+    .secao-destaque {
+        padding: 65px 20px;
+    }
+
+    .titulo-secao {
+        font-size: clamp(1.8rem, 8vw, 2.4rem);
+    }
+
+    .sobre-conteudo {
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+    }
+
+    .foto {
+        flex: 0 1 auto;
+        width: min(260px, 100%);
+        max-width: 260px;
+    }
+
+    .sobre-texto {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .sobre-texto h3 {
+        text-align: center;
+    }
+
+    .lista-habilidades {
+        gap: 10px;
+    }
+
+    .habilidade {
+        flex: 1 1 100px;
+        min-width: 0;
+        padding: 15px 10px;
+    }
+
+    .projeto-card {
+        padding: 22px;
+    }
+
+    .contato-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 380px) {
+    .navbar {
+        padding: 14px 12px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .menu {
+        gap: 10px 12px;
+    }
+
+    .menu a {
+        font-size: 0.76rem;
+    }
+
+    .inicio {
+        padding: 60px 16px;
+    }
+
+    .secao,
+    .secao-destaque {
+        padding: 55px 16px;
+    }
+
+    .foto {
+        width: min(230px, 100%);
+        max-width: 230px;
+    }
+
+    .projeto-card {
+        padding: 18px;
+    }
+}
