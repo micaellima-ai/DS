@@ -15,7 +15,7 @@
 
 <body>
 
-    <!-- CABEÇALHO -->
+    <!-- CABEÇALHO --->
     <header>
 
         <nav class="navbar">
