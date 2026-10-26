@@ -3,7 +3,7 @@ class JogosController
 {
     public function index()
     {
-        require __DIR__ . "/../../../resources/views/jogos.php";
+        require __DIR__ . "/../../../resources/views/projetos/jogos.php";
     }
 }
 
