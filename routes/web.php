@@ -7,9 +7,9 @@
         'GET' => [
             'portfolio' => [new PortfolioController(), 'index'],
             //'helpdesk' => [new HelpdeskController(), 'index'],
-            //'jogos' => [],
-            //'idade' => [],
-            //'notas' => []
+            'jogos' => [new PortfolioController(), 'index'],
+            'idade' => [new PortfolioController(), 'index'],
+            'notas' => [new PortfolioController(), 'index']
         ],
         
         'POST' => [
