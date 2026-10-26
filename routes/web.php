@@ -12,7 +12,7 @@
             //'helpdesk' => [new HelpdeskController(), 'index'],
             'jogos' => [new JogosController(), 'index'],
             'idade' => [new IdadeController(), 'index'],
-            'notas' => [new NotasController(), 'nota']
+            'notas' => [new NotasController(), 'index']
         ],
         
        // 'POST' => [

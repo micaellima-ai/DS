@@ -208,7 +208,7 @@
 
                     </div>
 
-                    <a href="projetos/idade.php" class="link-projeto">
+                    <a href="index?rota=idade" class="link-projeto">
                         Ver projeto ➙
                     </a>
 
