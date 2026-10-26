@@ -61,7 +61,7 @@ function escapar($valor)
 <body>
     <h2>Cadastrar chamado</h2>
 
-    <form method="POST">
+    <form action="/index.php?rota=helpdesk" method="POST">
 
         <label>Nome do funcionário:</label>
         <input type="text" name="nome" required>
