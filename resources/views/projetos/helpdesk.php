@@ -1,80 +1,52 @@
 <?php
+
 require_once __DIR__ . "/../../../app/Models/Chamado.php";
 
 $mensagem = "";
 
-// IDENTIFICAR A OPERAÇÃO
+//identificar a operação solicitada
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
     $acao = $_POST["acao"] ?? "";
 
-    // CADASTRAR
     if ($acao === "cadastrar") {
-
-        $nome = trim($_POST["nome"] ?? "");
-        $setor = $_POST["setor"] ?? "";
-        $equipamento = $_POST["equipamento"] ?? "";
-        $descricao = trim($_POST["descricao"] ?? "");
-        $prioridade = $_POST["prioridade"] ?? "";
-
-        if ($nome === "" || $descricao === "") {
-            $mensagem = "Preencha o nome e a descrição do problema.";
-        } else {
-            $resultado = cadastrarChamado(
-                $nome,
-                $setor,
-                $equipamento,
-                $descricao,
-                $prioridade
-            );
-
-            $mensagem = $resultado
-                ? "Chamado cadastrado com sucesso!"
-                : "Erro ao salvar o chamado.";
-        }
+        $sucesso = $model->cadastrarChamados(
+            $_POST["nome"] ?? "",
+            $_POST["setor"] ?? "",
+            $_POST["equipamento"] ?? "",
+            $_POST["descricao"] ?? "",
+            $_POST["prioridade"] ?? ""
+        );
+        $mensagem = $sucesso ? "Chamado cadastrado com sucesso!" : "Erro ao cadastrar. Verifique os dados.";
     }
 
-    // ATUALIZAR STATUS
-    elseif ($acao === "atualizar") {
-
-        $posicao = filter_var(
-            $_POST["posicao"] ?? "",
-            FILTER_VALIDATE_INT
+    if ($acao === "atualizar") {
+        // O (INT) é uma conversão de tipo, também chamada de type casting.
+        // Ele tenta transformar o valor em um numero inteiro
+        $sucesso = $model->atualizarChamado(
+            (int) ($_POST["posicao"] ?? -1),
+            $_POST["status"] ?? ""
         );
-
-        $novoStatus = $_POST["status"] ?? "";
-
-        if ($posicao === false || $posicao === null || $posicao < 0) {
-            $mensagem = "Número do chamado inválido.";
-        } elseif (atualizarChamado($posicao, $novoStatus)) {
-            $mensagem = "Status atualizado com sucesso!";
-        } else {
-            $mensagem = "Não foi possível atualizar o chamado.";
-        }
+        $mensagem = $sucesso ? "Status atualizado!" : "Não foi possível atualizar";
     }
 
-    // EXCLUIR
-    elseif ($acao === "deletar") {
+    if ($acao === "excluir") {
+        $sucesso = $model->excluirChamado((int) ($_POST["posicao"] ?? -1));
 
-        $posicao = filter_var(
-            $_POST["posicao"] ?? "",
-            FILTER_VALIDATE_INT
-        );
-
-        if ($posicao === false || $posicao === null || $posicao < 0) {
-            $mensagem = "Número do chamado inválido.";
-        } elseif (excluirChamado($posicao)) {
-            $mensagem = "Chamado excluído com sucesso!";
-        } else {
-            $mensagem = "Chamado não encontrado.";
-        }
+        $mensagem = $sucesso ? "Chamado exluído!" : "Não foi possível excluir";
     }
 }
 
-// CONSULTAR CHAMADOS E RELATÓRIO
-$chamados = listarChamados();
-$relatorio = contarChamados();
+$chamados = $model->lerChamados();
+$relatorio = $model->gerarChamados();
+
+//Evitar exibir HTML enviado pelo usuário
+function escapar($valor)
+{
+    return htmlspecialchars((string) $valor, ENT_QUOTES, "UTF-8");
+}
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -83,11 +55,10 @@ $relatorio = contarChamados();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="resources/css/helpdesk.css">
-    <title>Sistema Help Desk</title>
+    <title>Document</title>
 </head>
 
 <body>
-
     <h2>Cadastrar chamado</h2>
 
     <form method="POST">
@@ -137,76 +108,77 @@ $relatorio = contarChamados();
     </form>
 
     <hr>
+    <h2><?= $mensagem ?> </h2>
 
     <div class="res">
-    <h2>Relatório de atendimentos</h2>
+        <h2>Relatório de atendimentos</h2>
 
-    <p>Total de chamados: <?= $relatorio["total"] ?></p>
-    <p>Chamados abertos: <?= $relatorio["abertos"] ?></p>
-    <p>Chamados em andamento: <?= $relatorio["andamento"] ?></p>
-    <p>Chamados resolvidos: <?= $relatorio["resolvidos"] ?></p>
+        <p>Total de chamados: <?= $relatorio["total"] ?></p>
+        <p>Chamados abertos: <?= $relatorio["abertos"] ?></p>
+        <p>Chamados em andamento: <?= $relatorio["andamento"] ?></p>
+        <p>Chamados resolvidos: <?= $relatorio["resolvidos"] ?></p>
 
-    <hr>
+        <hr>
 
-    <h2>Lista de chamados</h2>
+        <h2>Lista de chamados</h2>
 
-    <?php if (count($chamados) === 0) { ?>
+        <?php  if (count($chamados) === 0) { ?>
 
-        <p>Nenhum chamado cadastrado.</p>
+            <p>Nenhum chamado cadastrado.</p>
 
-    <?php } else { ?>
+        <?php  } else { ?>
 
-        <?php foreach ($chamados as $posicao => $chamado) { ?>
+            <?php  foreach ($chamados as $posicao => $chamado) { ?>
 
-            <h3>Chamado nº <?= $posicao + 1 ?></h3>
+                <h3>Chamado nº <?= $posicao + 1 ?></h3>
 
-            <p><strong>Solicitante:</strong><?= htmlspecialchars($chamado["nome"], ENT_QUOTES, "UTF-8") ?></p>
+                <p><strong>Solicitante:</strong><?= htmlspecialchars($chamado["nome"], ENT_QUOTES, "UTF-8") ?></p>
 
-            <p><strong>Setor:</strong><?= htmlspecialchars($chamado["setor"], ENT_QUOTES, "UTF-8") ?></p>
+                <p><strong>Setor:</strong><?= htmlspecialchars($chamado["setor"], ENT_QUOTES, "UTF-8") ?></p>
 
-            <p><strong>Equipamento:</strong><?= htmlspecialchars($chamado["equipamento"], ENT_QUOTES, "UTF-8") ?> </p>
+                <p><strong>Equipamento:</strong><?= htmlspecialchars($chamado["equipamento"], ENT_QUOTES, "UTF-8") ?> </p>
 
-            <p><strong>Descrição:</strong><?= htmlspecialchars($chamado["descricao"], ENT_QUOTES, "UTF-8") ?></p>
+                <p><strong>Descrição:</strong><?= htmlspecialchars($chamado["descricao"], ENT_QUOTES, "UTF-8") ?></p>
 
-            <p><strong>Prioridade:</strong><?= htmlspecialchars($chamado["prioridade"], ENT_QUOTES, "UTF-8") ?></p>
+                <p><strong>Prioridade:</strong><?= htmlspecialchars($chamado["prioridade"], ENT_QUOTES, "UTF-8") ?></p>
 
-            <p><strong>Status:</strong><?= htmlspecialchars($chamado["status"], ENT_QUOTES, "UTF-8") ?></p>
+                <p><strong>Status:</strong><?= htmlspecialchars($chamado["status"], ENT_QUOTES, "UTF-8") ?></p>
 
-            <!-- ATUALIZAR STATUS -->
-            <form method="POST">
+                <!-- ATUALIZAR STATUS -->
+                <form method="POST">
 
-                <input type="hidden" name="posicao" value="<?= $posicao ?>">
+                    <input type="hidden" name="posicao" value="<?= $posicao ?>">
 
-                <label>Alterar status:</label>
+                    <label>Alterar status:</label>
 
-                <select name="status" required>
-                    <option value="Aberto">Aberto</option>
-                    <option value="Em andamento">Em andamento</option>
-                    <option value="Resolvido">Resolvido</option>
-                </select>
+                    <select name="status" required>
+                        <option value="Aberto">Aberto</option>
+                        <option value="Em andamento">Em andamento</option>
+                        <option value="Resolvido">Resolvido</option>
+                    </select>
 
-                <button type="submit" name="acao" value="atualizar">
-                    Atualizar
-                </button>
+                    <button type="submit" name="acao" value="atualizar">
+                        Atualizar
+                    </button>
 
-            </form>
+                </form>
 
-            <!-- EXCLUIR CHAMADO -->
-            <form method="POST">
+                <!-- EXCLUIR CHAMADO -->
+                <form method="POST">
 
-                <input type="hidden" name="posicao" value="<?= $posicao ?>">
+                    <input type="hidden" name="posicao" value="<?= $posicao ?>">
 
-                <button type="submit" name="acao" value="deletar">
-                    Excluir chamado
-                </button>
+                    <button type="submit" name="acao" value="deletar">
+                        Excluir chamado
+                    </button>
 
-            </form>
+                </form>
 
-            <hr>
+                <hr>
 
-        <?php } ?>
+            <?php } ?>
 
-    <?php } ?>
+        <?php  } ?>
 
     </div>
 
