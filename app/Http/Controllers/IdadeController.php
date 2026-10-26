@@ -1,5 +1,5 @@
 <?php
-class PortfolioController
+class IdadeController
 {
     public function index()
     {

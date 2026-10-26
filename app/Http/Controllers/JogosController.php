@@ -1,5 +1,5 @@
 <?php
-class PortfolioController
+class JogosController
 {
     public function index()
     {
