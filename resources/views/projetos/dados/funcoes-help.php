@@ -11,7 +11,7 @@ function lerChamados()
 
     //ler o arquivo
     $conteudo = (file_get_contents($arquivo));
-
+    
 
     //converter o JSON para ARRAY PHP
     $chamados = json_decode($conteudo, true);
