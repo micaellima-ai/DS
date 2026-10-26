@@ -9,7 +9,7 @@
     return [
         'GET' => [
             'portfolio' => [new PortfolioController(), 'index'],
-            'helpdesk' => [new HelpdeskController(), 'index'],
+            // 'helpdesk' => [new HelpdeskController(), 'index'],
             'jogos' => [new JogosController(), 'index'],
             'idade' => [new IdadeController(), 'index'],
             'notas' => [new NotasController(), 'index']
