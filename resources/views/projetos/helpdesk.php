@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/helpdesk-func.php";
+require_once __DIR__ . "/../../../Models/Chamado.php";
 
 $mensagem = "";
 
