@@ -2,7 +2,7 @@
   // require_once __DIR__ . "/../../Models/Chamado.php";
  
    class HelpdeskController
-//    {
+    {
 //        // GET - Exibir a página do Helpdesk
 //        public function index()
 //        {
@@ -58,6 +58,6 @@
     
 //            require __DIR__ . "/../../../resources/Views/projetos/helpdesk.php";
 //        }
-//    }
+   }
     
 ?>
