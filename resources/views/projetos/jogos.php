@@ -7,7 +7,7 @@ $nota = 0;
 $resultado = "";
 
 // Conexão com o banco
-require __DIR__ . "/../conexao.php";
+require __DIR__ . "/../../../config/conexao.php";
 
 // Cria a tabela caso ela não exista
 $sql = "CREATE TABLE IF NOT EXISTS lista_jogos (
