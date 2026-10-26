@@ -1,7 +1,7 @@
 <?php
 class NotasController
 {
-    public function index()
+    public function nota()
     {
         require __DIR__ . "/../../../resources/views/projetos/notas.php";
     }
