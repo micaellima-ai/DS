@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <h1>Requisitos</h1>
 
-    <form method="POST">
+    <form action="/index.php?rota=notas" method="POST">
 
         <label for="nome">Nome</label>
         <input type="text" id="nome" name="nome" placeholder="Digite o nome">

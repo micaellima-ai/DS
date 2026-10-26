@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-    <form method="POST">
+    <form action="/index.php?rota=idade" method="POST">
 
         <label for="nome">Nome</label>
         <input type="text" id="nome" name="nome" placeholder="Digite o nome">

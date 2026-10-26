@@ -75,7 +75,7 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 
-    <form method="POST">
+    <form action="/index.php?rota=jogos" method="POST">
 
         <h1>Cadastro de jogos</h1>
 
