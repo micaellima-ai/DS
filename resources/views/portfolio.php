@@ -81,7 +81,7 @@
             <div class="sobre-conteudo">
 
                 <div class="foto">
-                    <img src="../img/minhafoto.jpeg" alt="Minha foto">
+                    <img src="../images/minhafoto.jpeg" alt="Minha foto">
                 </div>
 
                 <div class="sobre-texto">
