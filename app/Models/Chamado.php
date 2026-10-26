@@ -1,7 +1,7 @@
 <?php
 
         // Caminho do arquivo JSON
-        $caminho = __DIR__ . "/chamados.json";
+        $caminho = __DIR__ . "/../../storage/data/chamados.json";
 
 class Chamado
 {

@@ -15,9 +15,9 @@
             'notas' => [new NotasController(), 'index']
         ],
         
-        'POST' => [
+       // 'POST' => [
             //'helpdesk' =>[new HelpdeskController(), '']
-        ]
+    //    ]
 
-    ];
+ ];
 ?>
