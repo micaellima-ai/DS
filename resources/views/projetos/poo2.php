@@ -148,7 +148,14 @@ function escapar($texto)
 
     </form>
 
-    <?php ?>
+    <?php if ($mensagem == ""){?>
+        <h3> <?= $mensagem ?></h3>
+        
+        <p> <?= $nome ?> </p>
+        <p> <?= $tipo ?> </p>
+        <p> <?= $quantidade ?> </p>
+
+    <?php }?>
 
 
 
