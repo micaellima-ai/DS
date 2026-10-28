@@ -4,7 +4,7 @@
 //================================
 
 // 1. CLASSE ABSTRATA
-$situacao = "";
+
 
 abstract class Maquina
 {
@@ -44,7 +44,7 @@ class Esteira extends Maquina
 {
     public function operar()
     {
-        return $situacao = "Transportando peças...";
+        return "Transportando peças...";
     }
 }
 
@@ -52,7 +52,7 @@ class Prensa extends Maquina
 {
     public function operar()
     {
-        return $situacao = "Prensando peças...";
+        return "Prensando peças...";
     }
 }
 
@@ -60,7 +60,7 @@ class RoboSoldagem extends Maquina
 {
     public function operar()
     {
-        return $situacao = "Soldadndo peças...";
+        return "Soldadndo peças...";
     }
 }
 
@@ -182,9 +182,7 @@ function escapar($texto)
                     <p>Nome Máquina: <?= $nome ?></p>
                     <p>Tipo: <?= $tipo ?></p>
                     <p>qtde.: <?= $quantidade ?></p>
-                    <p><?= $situacao == 'Prensando peças...'?>
-                
-                </p>
+                    <p></p>
 
                 </div>
 
