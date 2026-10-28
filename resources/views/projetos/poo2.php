@@ -121,8 +121,8 @@ function escapar($texto)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pogramação orientada a objeto</title>
     <link rel="stylesheet" href="resources/css/poo.css">
+    <title>Pogramação orientada a objeto</title>
 </head>
 
 <body>
