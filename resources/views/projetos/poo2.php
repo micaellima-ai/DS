@@ -34,73 +34,117 @@ abstract class Maquina
 
     // ABSTRAÇÃO
     abstract public function operar();
-
 }
 
-    //2.HERANÇA
-    class Esteira extends Maquina{
-        public function operar()
-        {
-            return "Transportando peças...";
+//2.HERANÇA
+class Esteira extends Maquina
+{
+    public function operar()
+    {
+        return "Transportando peças...";
+    }
+}
+
+class Prensa extends Maquina
+{
+    public function operar()
+    {
+        return "Prensando peças...";
+    }
+}
+
+class RoboSoldagem extends Maquina
+{
+    public function operar()
+    {
+        return "Soldadndo peças...";
+    }
+}
+
+// 3. SESSÃO = ARMAZENAMENTO TEMPORÁRIO
+if (!isset($_SESSION["maquinas"])) {
+    $_SESSION["maquinas"] = [];
+}
+
+$mensagem = "";
+
+//4. RECEBER FORMULÁRIO VIA POST
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nome = $_POST["nome"] ?? "";
+    $tipo = $_POST["tipo"] ?? "";
+    $quantidade = $_POST["quantidade"] ?? null;
+
+    if (
+        $nome === "" ||
+        $quantidade === false ||
+        $quantidade <= 0
+    ) {
+        $mensagem = "Preencha os campos corretamente!";
+    } else {
+        // CRIANDO OBJETOS COM BSE NO FORMULÁRIO
+        if ($tipo === "esteira") {
+            $maquina = new Esteira($nome);
+        } elseif ($tipo === "prensa") {
+            $maquina = new Prensa($nome);
+        } elseif ($tipo === "robosoldagem") {
+            $maquina = new RoboSoldagem($nome);
         }
+
+
+        // EXECUTANDO OS MÉTODOS DO OBJETO
+        $maquina->registrarProducao($quantidade);
+
+        //GUARDANDO O OBJETO NA SESSÃO
+        $_SESSION["maquina"][] = $maquina;
+
+        $mensagem = "Máquina cadastrada com sucesso!";
     }
-    class Prensa extends Maquina{
-        public function operar()
-        {
-            return "Prensando peças...";
-        }
-    }
-    class RoboSoldagem extends Maquina{
-        public function operar()
-        {
-            return "Soldadndo peças...";
-        }
-    }
+}
 
-    // 3. SESSÃO = ARMAZENAMENTO TEMPORÁRIO
-    if (!isset($_SESSION["maquinas"])){
-        $_SESSION["maquinas"] = [];
-    }
 
-    $mensagem = "";
+//.EVITAR INTERPRETAR TEXTOS COMO HTML
+function escapar($texto)
+{
+    return htmlspecialchars(
+        (string) $texto,
+        ENT_QUOTES,
+        "UTF-8"
+    );
+}
 
-    //4. RECEBER FORMULÁRIO VIA POST
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
-        $nome = $_POST["nome"] ?? "";
-        $tipo = $_POST["tipo"] ?? "";
-        $quantidade = $_POST["quantidade"] ?? null;
 
-        if(
-            $nome === "" ||
-            $quantidade === false ||
-            $quantidade <= 0
-        ){
-            $mensagem = "Preencha os campos corretamente!";
-        } else{
-            // CRIANDO OBJETOS COM BSE NO FORMULÁRIO
-            if ($tipo === "esteira"){
-                $maquina = new Esteira($nome);
-            }elseif ($tipo === "prensa"){
-                $maquina = new Prensa($nome);
-            } elseif ($tipo === "robosoldagem"){
-                $maquina = new RoboSoldagem($nome);
-            }
+?>
 
-            
-            // EXECUTANDO OS MÉTODOS DO OBJETO
-            $maquina->registrarProducao($quantidade);
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST">
 
-            //GUARDANDO O OBJETO NA SESSÃO
-            $_SESSION["maquina"][] = $maquina;
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
 
-            $mensagem = "Máquina cadastrada com sucesso!";
+    <label for="tipo">Tipo:</label>
+    <select id="setor" name="setor" required>
+            <option value="Esteira">Esteira</option>
+            <option value="Prensa">Prensa</option>
+            <option value="robosoldagem">RoboSoldagem</option>
+        </select>
 
 
 
 
-        }
-    }
 
 
 
-    ?>
+
+    </form>
+
+
+    
+</body>
+</html>
