@@ -137,7 +137,7 @@ function escapar($texto)
 
             <div class="formulario">
 
-                <form action="" method="POST">
+                <form method="POST">
 
                     <div class="campo">
                         <label for="nome">Nome Maquina:</label>
@@ -174,9 +174,9 @@ function escapar($texto)
 
                     <h3><?= $mensagem ?></h3>
 
-                    <p>Nome Máquina: <?= escapar($nome) ?></p>
-                    <p>Tipo: <?= escapar($tipo) ?></p>
-                    <p>qtde.: <?= escapar($quantidade) ?></p>
+                    <p>Nome Máquina: <?= $nome ?></p>
+                    <p>Tipo: <?= $tipo ?></p>
+                    <p>qtde.: <?= $quantidade ?></p>
 
                 </div>
 
