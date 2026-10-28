@@ -18,7 +18,7 @@ return [
     ],
 
     'POST' => [
-        'helpdesk' => [new HelpdeskController(), 'salvar'],
+        'helpdesk' => [new HelpdeskController(), 'index'],
         'jogos' => [new JogosController(), 'index'],
         'idade' => [new IdadeController(), 'index'],
         'notas' => [new NotasController(), 'index']
