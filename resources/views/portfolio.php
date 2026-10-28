@@ -341,6 +341,42 @@
 
             </div>
 
+
+
+            <div class="projeto-numero">
+                05
+            </div>
+
+            <h3>
+                Programação Orientada a Objetos
+            </h3>
+
+            <p>
+                Sistema de controle de produção industrial com cadastro de máquinas,
+                registro de quantidades produzidas e aplicação dos conceitos de
+                abstração, herança e encapsulamento em PHP.
+            </p>
+
+            <div class="tecnologias">
+
+                <span>
+                    HTML
+                </span>
+
+                <span>
+                    CSS
+                </span>
+
+                <span>
+                    PHP
+                </span>
+
+            </div>
+
+            <a href="/index.php?rota=poo" class="link-projeto">
+                Ver projeto ➙
+            </a>
+
         </section>
 
 
