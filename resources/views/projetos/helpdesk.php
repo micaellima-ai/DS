@@ -37,7 +37,7 @@ $acaoUrl = "/index.php?rota=helpdesk";
 
     <h2>Cadastrar chamado</h2>
 
-    <form action="<?= escapar($acaoUrl) ?>" method="POST">
+    <form action="index.php?rota=helpdesk" method="POST">
 
         <label for="nome">Nome do funcionário:</label>
         <input type="text" id="nome" name="nome" required>
