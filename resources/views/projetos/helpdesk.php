@@ -1,52 +1,16 @@
+
 <?php
-
-require_once __DIR__ . "/../../../app/Models/Chamado.php";
-
-$mensagem = "";
-
-//identificar a operação solicitada
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $acao = $_POST["acao"] ?? "";
-
-    if ($acao === "cadastrar") {
-        $sucesso = $model->cadastrarChamados(
-            $_POST["nome"] ?? "",
-            $_POST["setor"] ?? "",
-            $_POST["equipamento"] ?? "",
-            $_POST["descricao"] ?? "",
-            $_POST["prioridade"] ?? ""
-        );
-        $mensagem = $sucesso ? "Chamado cadastrado com sucesso!" : "Erro ao cadastrar. Verifique os dados.";
-    }
-
-    if ($acao === "atualizar") {
-        // O (INT) é uma conversão de tipo, também chamada de type casting.
-        // Ele tenta transformar o valor em um numero inteiro
-        $sucesso = $model->atualizarChamado(
-            (int) ($_POST["posicao"] ?? -1),
-            $_POST["status"] ?? ""
-        );
-        $mensagem = $sucesso ? "Status atualizado!" : "Não foi possível atualizar";
-    }
-
-    if ($acao === "excluir") {
-        $sucesso = $model->excluirChamado((int) ($_POST["posicao"] ?? -1));
-
-        $mensagem = $sucesso ? "Chamado exluído!" : "Não foi possível excluir";
-    }
-}
-
-$chamados = $model->lerChamados();
-$relatorio = $model->gerarChamados();
-
-//Evitar exibir HTML enviado pelo usuário
 function escapar($valor)
 {
-    return htmlspecialchars((string) $valor, ENT_QUOTES, "UTF-8");
+    return htmlspecialchars(
+        (string) $valor,
+        ENT_QUOTES,
+        "UTF-8"
+    );
 }
 
+$acaoUrl = $_SERVER["SCRIPT_NAME"] . "?rota=helpdesk";
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -54,21 +18,27 @@ function escapar($valor)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="resources/css/helpdesk.css">
-    <title>Document</title>
+
+    <link rel="stylesheet"
+          href="resources/css/helpdesk.css">
+
+    <title>Helpdesk - Chamados</title>
 </head>
 
 <body>
+
+    <h1>Helpdesk</h1>
+
     <h2>Cadastrar chamado</h2>
 
-    <form action="/index.php?rota=helpdesk" method="POST">
+    <form action="<?= escapar($acaoUrl) ?>" method="POST">
 
-        <label>Nome do funcionário:</label>
-        <input type="text" name="nome" required>
+        <label for="nome">Nome do funcionário:</label>
+        <input type="text" id="nome" name="nome" required>
         <br><br>
 
-        <label>Setor:</label>
-        <select name="setor" required>
+        <label for="setor">Setor:</label>
+        <select id="setor" name="setor" required>
             <option value="Produção">Produção</option>
             <option value="Administrativo">Administrativo</option>
             <option value="Logística">Logística</option>
@@ -78,8 +48,8 @@ function escapar($valor)
         </select>
         <br><br>
 
-        <label>Equipamento:</label>
-        <select name="equipamento" required>
+        <label for="equipamento">Equipamento:</label>
+        <select id="equipamento" name="equipamento" required>
             <option value="Computador">Computador</option>
             <option value="Impressora">Impressora</option>
             <option value="Rede">Rede</option>
@@ -88,13 +58,13 @@ function escapar($valor)
         </select>
         <br><br>
 
-        <label>Descrição do problema:</label>
+        <label for="descricao">Descrição do problema:</label>
         <br>
-        <textarea name="descricao" required></textarea>
+        <textarea id="descricao" name="descricao" required></textarea>
         <br><br>
 
-        <label>Prioridade:</label>
-        <select name="prioridade" required>
+        <label for="prioridade">Prioridade:</label>
+        <select id="prioridade" name="prioridade" required>
             <option value="Baixa">Baixa</option>
             <option value="Média">Média</option>
             <option value="Alta">Alta</option>
@@ -108,84 +78,148 @@ function escapar($valor)
     </form>
 
     <hr>
-    <h2><?= $mensagem ?> </h2>
 
-    <div class="res">
+    <?php if (!empty($mensagem)): ?>
+        <p role="status">
+            <?= escapar($mensagem) ?>
+        </p>
+    <?php endif; ?>
+
+    <section class="res">
+
         <h2>Relatório de atendimentos</h2>
 
-        <p>Total de chamados: <?= $relatorio["total"] ?></p>
-        <p>Chamados abertos: <?= $relatorio["abertos"] ?></p>
-        <p>Chamados em andamento: <?= $relatorio["andamento"] ?></p>
-        <p>Chamados resolvidos: <?= $relatorio["resolvidos"] ?></p>
+        <p>Total de chamados:
+            <?= (int) $relatorio["total"] ?>
+        </p>
+
+        <p>Chamados abertos:
+            <?= (int) $relatorio["abertos"] ?>
+        </p>
+
+        <p>Chamados em andamento:
+            <?= (int) $relatorio["andamento"] ?>
+        </p>
+
+        <p>Chamados resolvidos:
+            <?= (int) $relatorio["resolvidos"] ?>
+        </p>
 
         <hr>
 
         <h2>Lista de chamados</h2>
 
-        <?php  if (count($chamados) === 0) { ?>
+        <?php if (count($chamados) === 0): ?>
 
             <p>Nenhum chamado cadastrado.</p>
 
-        <?php  } else { ?>
+        <?php else: ?>
 
-            <?php  foreach ($chamados as $posicao => $chamado) { ?>
+            <?php foreach ($chamados as $posicao => $chamado): ?>
 
-                <h3>Chamado nº <?= $posicao + 1 ?></h3>
+                <article class="chamado">
 
-                <p><strong>Solicitante:</strong><?= htmlspecialchars($chamado["nome"], ENT_QUOTES, "UTF-8") ?></p>
+                    <h3>Chamado nº <?= (int) $posicao + 1 ?></h3>
 
-                <p><strong>Setor:</strong><?= htmlspecialchars($chamado["setor"], ENT_QUOTES, "UTF-8") ?></p>
+                    <p>
+                        <strong>Solicitante:</strong>
+                        <?= escapar($chamado["nome"] ?? "") ?>
+                    </p>
 
-                <p><strong>Equipamento:</strong><?= htmlspecialchars($chamado["equipamento"], ENT_QUOTES, "UTF-8") ?> </p>
+                    <p>
+                        <strong>Setor:</strong>
+                        <?= escapar($chamado["setor"] ?? "") ?>
+                    </p>
 
-                <p><strong>Descrição:</strong><?= htmlspecialchars($chamado["descricao"], ENT_QUOTES, "UTF-8") ?></p>
+                    <p>
+                        <strong>Equipamento:</strong>
+                        <?= escapar($chamado["equipamento"] ?? "") ?>
+                    </p>
 
-                <p><strong>Prioridade:</strong><?= htmlspecialchars($chamado["prioridade"], ENT_QUOTES, "UTF-8") ?></p>
+                    <p>
+                        <strong>Descrição:</strong>
+                        <?= escapar($chamado["descricao"] ?? "") ?>
+                    </p>
 
-                <p><strong>Status:</strong><?= htmlspecialchars($chamado["status"], ENT_QUOTES, "UTF-8") ?></p>
+                    <p>
+                        <strong>Prioridade:</strong>
+                        <?= escapar($chamado["prioridade"] ?? "") ?>
+                    </p>
 
-                <!-- ATUALIZAR STATUS -->
-                <form method="POST">
+                    <p>
+                        <strong>Status:</strong>
+                        <?= escapar($chamado["status"] ?? "Aberto") ?>
+                    </p>
 
-                    <input type="hidden" name="posicao" value="<?= $posicao ?>">
+                    <!-- ATUALIZAR STATUS -->
+                    <form action="<?= escapar($acaoUrl) ?>" method="POST">
 
-                    <label>Alterar status:</label>
+                        <input type="hidden"
+                               name="posicao"
+                               value="<?= (int) $posicao ?>">
 
-                    <select name="status" required>
-                        <option value="Aberto">Aberto</option>
-                        <option value="Em andamento">Em andamento</option>
-                        <option value="Resolvido">Resolvido</option>
-                    </select>
+                        <label for="status-<?= (int) $posicao ?>">
+                            Alterar status:
+                        </label>
 
-                    <button type="submit" name="acao" value="atualizar">
-                        Atualizar
-                    </button>
+                        <select id="status-<?= (int) $posicao ?>"
+                                name="status" required>
 
-                </form>
+                            <option value="Aberto"
+                                <?= ($chamado["status"] ?? "") === "Aberto" ? "selected" : "" ?>>
+                                Aberto
+                            </option>
 
-                <!-- EXCLUIR CHAMADO -->
-                <form method="POST">
+                            <option value="Em andamento"
+                                <?= ($chamado["status"] ?? "") === "Em andamento" ? "selected" : "" ?>>
+                                Em andamento
+                            </option>
 
-                    <input type="hidden" name="posicao" value="<?= $posicao ?>">
+                            <option value="Resolvido"
+                                <?= ($chamado["status"] ?? "") === "Resolvido" ? "selected" : "" ?>>
+                                Resolvido
+                            </option>
 
-                    <button type="submit" name="acao" value="deletar">
-                        Excluir chamado
-                    </button>
+                        </select>
 
-                </form>
+                        <button type="submit"
+                                name="acao"
+                                value="atualizar">
+                            Atualizar status
+                        </button>
 
-                <hr>
+                    </form>
 
-            <?php } ?>
+                    <!-- EXCLUIR CHAMADO -->
+                    <form action="<?= escapar($acaoUrl) ?>"
+                          method="POST"
+                          onsubmit="return confirm('Deseja realmente excluir este chamado?');">
 
-        <?php  } ?>
+                        <input type="hidden"
+                               name="posicao"
+                               value="<?= (int) $posicao ?>">
 
-    </div>
+                        <button type="submit"
+                                name="acao"
+                                value="excluir">
+                            Excluir chamado
+                        </button>
 
+                    </form>
 
-    <br><br>
-    <a href="../index.php"> ← Voltar</a>
+                    <hr>
+
+                </article>
+
+            <?php endforeach; ?>
+
+        <?php endif; ?>
+
+    </section>
+
+    <p>
+        <a href="index.php">← Voltar</a>
+    </p>
 
 </body>
-
 </html>

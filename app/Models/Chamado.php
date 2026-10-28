@@ -1,53 +1,115 @@
-<?php
 
-        // Caminho do arquivo JSON
-        $caminho = __DIR__ . "/../../storage/data/chamados.json";
+<?php
 
 class Chamado
 {
+    private $caminho;
+
+    public function __construct()
+    {
+        $this->caminho = __DIR__ . "/../../storage/data/chamados.json";
+
+        $pasta = dirname($this->caminho);
+
+        if (!is_dir($pasta)) {
+            mkdir($pasta, 0775, true);
+        }
+
+        if (!file_exists($this->caminho)) {
+            file_put_contents($this->caminho, "[]");
+        }
+    }
+
     // LER OS CHAMADOS
     public function listarChamados()
     {
-
-        global $caminho;
-
-        if (!file_exists($caminho)) {
-            file_put_contents($caminho, "[]");
-        }
-
-        $json = file_get_contents($caminho);
-        $chamados = json_decode($json, true);
-
-        if (!is_array($chamados)) {
+        if (!is_readable($this->caminho)) {
             return [];
         }
 
-        return $chamados;
+        $json = file_get_contents($this->caminho);
+        $chamados = json_decode($json, true);
+
+        return is_array($chamados) ? $chamados : [];
     }
 
     // SALVAR OS CHAMADOS
     public function salvarChamados($chamados)
     {
-        global $caminho;
-
         $json = json_encode(
-            $chamados,
+            array_values($chamados),
             JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
 
-        return file_put_contents($caminho, $json) !== false;
-    }
-
-    // CADASTRAR CHAMADO
-    public function cadastrarChamado($nome, $setor, $equipamento, $descricao, $prioridade)
-    {
-        if (trim($nome) === "" || trim($descricao) === "") {
+        if ($json === false) {
             return false;
         }
 
-        $chamados = $this -> listarChamados();
+        return file_put_contents(
+            $this->caminho,
+            $json,
+            LOCK_EX
+        ) !== false;
+    }
 
-        $novoChamado = [
+    // CADASTRAR CHAMADO
+    public function cadastrarChamado(
+        $nome,
+        $setor,
+        $equipamento,
+        $descricao,
+        $prioridade
+    ) {
+        $nome = trim($nome);
+        $setor = trim($setor);
+        $equipamento = trim($equipamento);
+        $descricao = trim($descricao);
+        $prioridade = trim($prioridade);
+
+        if (
+            $nome === "" ||
+            $setor === "" ||
+            $equipamento === "" ||
+            $descricao === "" ||
+            $prioridade === ""
+        ) {
+            return false;
+        }
+
+        $setoresPermitidos = [
+            "Produção",
+            "Administrativo",
+            "Logística",
+            "Financeiro",
+            "Enfermagem",
+            "TI"
+        ];
+
+        $equipamentosPermitidos = [
+            "Computador",
+            "Impressora",
+            "Rede",
+            "Sistema",
+            "Outro"
+        ];
+
+        $prioridadesPermitidas = [
+            "Baixa",
+            "Média",
+            "Alta"
+        ];
+
+        if (
+            !in_array($setor, $setoresPermitidos, true) ||
+            !in_array($equipamento, $equipamentosPermitidos, true) ||
+            !in_array($prioridade, $prioridadesPermitidas, true)
+        ) {
+            return false;
+        }
+
+        $chamados = $this->listarChamados();
+
+        $chamados[] = [
             "nome" => $nome,
             "setor" => $setor,
             "equipamento" => $equipamento,
@@ -56,9 +118,7 @@ class Chamado
             "status" => "Aberto"
         ];
 
-        $chamados[] = $novoChamado;
-
-        return $this -> salvarChamados($chamados);
+        return $this->salvarChamados($chamados);
     }
 
     // ATUALIZAR STATUS
@@ -70,25 +130,24 @@ class Chamado
             "Resolvido"
         ];
 
-        $chamados = $this -> listarChamados();
+        $chamados = $this->listarChamados();
 
-        if (!isset($chamados[$posicao])) {
-            return false;
-        }
-
-        if (!in_array($novoStatus, $statusPermitidos, true)) {
+        if (
+            !isset($chamados[$posicao]) ||
+            !in_array($novoStatus, $statusPermitidos, true)
+        ) {
             return false;
         }
 
         $chamados[$posicao]["status"] = $novoStatus;
 
-        return $this -> salvarChamados($chamados);
+        return $this->salvarChamados($chamados);
     }
 
     // EXCLUIR CHAMADO
     public function excluirChamado($posicao)
     {
-        $chamados = $this -> listarChamados();
+        $chamados = $this->listarChamados();
 
         if (!isset($chamados[$posicao])) {
             return false;
@@ -96,15 +155,13 @@ class Chamado
 
         unset($chamados[$posicao]);
 
-        $chamados = array_values($chamados);
-
-        return $this -> salvarChamados($chamados);
+        return $this->salvarChamados(array_values($chamados));
     }
 
     // GERAR RELATÓRIO
     public function contarChamados()
     {
-        $chamados = $this -> listarChamados();
+        $chamados = $this->listarChamados();
 
         $relatorio = [
             "total" => count($chamados),
@@ -114,11 +171,13 @@ class Chamado
         ];
 
         foreach ($chamados as $chamado) {
-            if ($chamado["status"] === "Aberto") {
+            $status = $chamado["status"] ?? "";
+
+            if ($status === "Aberto") {
                 $relatorio["abertos"]++;
-            } elseif ($chamado["status"] === "Em andamento") {
+            } elseif ($status === "Em andamento") {
                 $relatorio["andamento"]++;
-            } elseif ($chamado["status"] === "Resolvido") {
+            } elseif ($status === "Resolvido") {
                 $relatorio["resolvidos"]++;
             }
         }
