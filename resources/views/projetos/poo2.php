@@ -114,6 +114,7 @@ function escapar($texto)
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -121,45 +122,69 @@ function escapar($texto)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pogramação orientada a objeto</title>
+    <link rel="stylesheet" href="resources/css/poo.css">
 </head>
 
 <body>
-    <h2>SISTEMA DE CONTROLE DE PRODUÇÃO INDUSTRIAL</h2>
 
-    <form action="" method="POST">
+    <div class="container">
 
-        <label for="nome">Nome Maquina:</label>
-        <input type="text" id="nome" name="nome" required>
-        <br><br>
+        <div class="cabecalho">
+            <h2>SISTEMA DE CONTROLE DE PRODUÇÃO INDUSTRIAL</h2>
+        </div>
 
-        <label for="tipo">Tipo:</label>
-        <select id="tipo" name="tipo" required>
-            <option value="esteira">Esteira</option>
-            <option value="prensa">Prensa</option>
-            <option value="robosoldagem">RoboSoldagem</option>
-        </select>
-        <br><br>
+        <div class="conteudo">
 
-        <label for="quantidade">Quantidade:</label>
-        <input type="number" id="quantidade" name="quantidade" min="0" required>
-        <br><br>
+            <div class="formulario">
 
-        <button type="submit" name="acao" value="cadastrar">Cadastrar</button>
+                <form action="" method="POST">
 
-    </form>
+                    <div class="campo">
+                        <label for="nome">Nome Maquina:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
 
-    <?php if ($mensagem != ""){?>
-        <h3> <?= $mensagem ?></h3>
+                    <div class="campo">
+                        <label for="tipo">Tipo:</label>
+                        <select id="tipo" name="tipo" required>
+                            <option value="esteira">Esteira</option>
+                            <option value="prensa">Prensa</option>
+                            <option value="robosoldagem">Robo Soldagem</option>
+                        </select>
+                    </div>
 
-        <p> <?= $nome ?> </p>
-        <p> <?= $tipo ?> </p>
-        <p> <?= $quantidade ?> </p>
+                    <div class="campo">
+                        <label for="quantidade">Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" min="0" required>
+                    </div>
 
-    <?php }?>
+                    <div class="campo">
+                        <button type="submit" name="acao" value="cadastrar">
+                            Cadastrar
+                        </button>
+                    </div>
 
+                </form>
 
+            </div>
 
+            <?php if ($mensagem != "") { ?>
 
+                <div class="mensagem">
+
+                    <h3><?= $mensagem ?></h3>
+
+                    <p>Nome Máquina: <?= escapar($nome) ?></p>
+                    <p>Tipo: <?= escapar($tipo) ?></p>
+                    <p>qtde.: <?= escapar($quantidade) ?></p>
+
+                </div>
+
+            <?php } ?>
+
+        </div>
+
+    </div>
 
 </body>
 
