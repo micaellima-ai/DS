@@ -339,10 +339,10 @@
                 </div>
 
 
-            </div>
+            
 
 
-
+            <!-- PROJETO 05 -->
             <div class="projeto-numero">
                 05
             </div>
@@ -376,6 +376,8 @@
             <a href="/index.php?rota=poo" class="link-projeto">
                 Ver projeto ➙
             </a>
+
+            </div>
 
         </section>
 
