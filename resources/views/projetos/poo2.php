@@ -1,8 +1,9 @@
-
 <?php
-session_start();
+//================================
+// SISTEMA DE CONTROLE DE PRODUÇÃO INDUSTRIAL
+//================================
 
-// CLASSE ABSTRATA
+// 1. CLASSE ABSTRATA
 abstract class Maquina
 {
     public $nome;
@@ -14,11 +15,13 @@ abstract class Maquina
         $this->producao = 0;
     }
 
+    //ENCAPSULAMENTO - GETTER
     public function getProducao()
     {
         return $this->producao;
     }
 
+    //ENCAPSULAMENTO - GETTER
     public function registrarProducao($quantidade)
     {
         if ($quantidade <= 0) {
@@ -29,10 +32,11 @@ abstract class Maquina
         return true;
     }
 
+    // ABSTRAÇÃO
     abstract public function operar();
 }
 
-// HERANÇA
+//2.HERANÇA
 class Esteira extends Maquina
 {
     public function operar()
@@ -53,61 +57,52 @@ class RoboSoldagem extends Maquina
 {
     public function operar()
     {
-        return "Soldando peças...";
+        return "Soldadndo peças...";
     }
 }
 
-// INICIALIZAÇÃO DA SESSÃO
+// 3. SESSÃO = ARMAZENAMENTO TEMPORÁRIO
 if (!isset($_SESSION["maquinas"])) {
     $_SESSION["maquinas"] = [];
 }
 
 $mensagem = "";
-$nome = "";
-$tipo = "";
-$quantidade = "";
 
+//4. RECEBER FORMULÁRIO VIA POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nome = trim($_POST["nome"] ?? "");
+    $nome = $_POST["nome"] ?? "";
     $tipo = $_POST["tipo"] ?? "";
-    $quantidade = filter_input(
-        INPUT_POST,
-        "quantidade",
-        FILTER_VALIDATE_INT
-    );
+    $quantidade = $_POST["quantidade"] ?? null;
 
     if (
         $nome === "" ||
         $quantidade === false ||
-        $quantidade === null ||
         $quantidade <= 0
     ) {
         $mensagem = "Preencha os campos corretamente!";
     } else {
-        // CRIAÇÃO DOS OBJETOS
+        // CRIANDO OBJETOS COM BSE NO FORMULÁRIO
         if ($tipo === "esteira") {
             $maquina = new Esteira($nome);
         } elseif ($tipo === "prensa") {
             $maquina = new Prensa($nome);
         } elseif ($tipo === "robosoldagem") {
             $maquina = new RoboSoldagem($nome);
-        } else {
-            $maquina = null;
         }
 
-        if ($maquina !== null) {
-            $maquina->registrarProducao($quantidade);
 
-            $_SESSION["maquinas"][] = $maquina;
+        // EXECUTANDO OS MÉTODOS DO OBJETO
+        $maquina->registrarProducao($quantidade);
 
-            $mensagem = "Máquina cadastrada com sucesso!";
-        } else {
-            $mensagem = "Selecione um tipo de máquina válido!";
-        }
+        //GUARDANDO O OBJETO NA SESSÃO
+        $_SESSION["maquina"][] = $maquina;
+
+        $mensagem = "Máquina cadastrada com sucesso!";
     }
 }
 
-// PROTEÇÃO CONTRA HTML INJETADO
+
+//.EVITAR INTERPRETAR TEXTOS COMO HTML
 function escapar($texto)
 {
     return htmlspecialchars(
@@ -116,7 +111,9 @@ function escapar($texto)
         "UTF-8"
     );
 }
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -124,139 +121,71 @@ function escapar($texto)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Sistema de Controle de Produção</title>
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resources/css/poo.css">
+    <title>Pogramação orientada a objeto</title>
 </head>
 
 <body>
 
     <div class="container">
 
-        <!-- CABEÇALHO -->
         <div class="cabecalho">
-            <h1>Controle de Produção</h1>
-            <p>Sistema de Controle de Produção Industrial</p>
+            <h2>SISTEMA DE CONTROLE DE PRODUÇÃO INDUSTRIAL</h2>
         </div>
 
-        <!-- CONTEÚDO PRINCIPAL -->
         <div class="conteudo">
 
-            <div class="titulo-formulario">
-                <h2>Cadastrar Máquina</h2>
-                <p>Preencha os dados da máquina industrial.</p>
-            </div>
-
-            <!-- FORMULÁRIO -->
             <div class="formulario">
+
                 <form action="" method="POST">
 
                     <div class="campo">
-                        <label for="nome">Nome da máquina</label>
-                        <input
-                            type="text"
-                            id="nome"
-                            name="nome"
-                            placeholder="Ex.: Máquina 01"
-                            required
-                            value="<?= escapar($nome) ?>"
-                        >
+                        <label for="nome">Nome Maquina:</label>
+                        <input type="text" id="nome" name="nome" required>
                     </div>
 
                     <div class="campo">
-                        <label for="tipo">Tipo de máquina</label>
+                        <label for="tipo">Tipo:</label>
                         <select id="tipo" name="tipo" required>
-                            <option value="">Selecione uma máquina</option>
-
-                            <option value="esteira"
-                                <?= $tipo === "esteira" ? "selected" : "" ?>>
-                                Esteira
-                            </option>
-
-                            <option value="prensa"
-                                <?= $tipo === "prensa" ? "selected" : "" ?>>
-                                Prensa
-                            </option>
-
-                            <option value="robosoldagem"
-                                <?= $tipo === "robosoldagem" ? "selected" : "" ?>>
-                                Robô de Soldagem
-                            </option>
+                            <option value="esteira">Esteira</option>
+                            <option value="prensa">Prensa</option>
+                            <option value="robosoldagem">Robo Soldagem</option>
                         </select>
                     </div>
 
                     <div class="campo">
-                        <label for="quantidade">Quantidade produzida</label>
-                        <input
-                            type="number"
-                            id="quantidade"
-                            name="quantidade"
-                            min="1"
-                            step="1"
-                            placeholder="Ex.: 100"
-                            required
-                            value="<?= escapar($quantidade) ?>"
-                        >
+                        <label for="quantidade">Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" min="0" required>
                     </div>
 
                     <div class="campo">
                         <button type="submit" name="acao" value="cadastrar">
-                            Cadastrar Máquina
+                            Cadastrar
                         </button>
                     </div>
 
                 </form>
+
             </div>
 
-            <!-- MENSAGEM DO SISTEMA -->
-            <?php if ($mensagem !== ""): ?>
-                <div class="mensagem <?= isset($maquina) && $maquina !== null && $mensagem === "Máquina cadastrada com sucesso!" ? "sucesso" : "erro" ?>">
-                    <?= escapar($mensagem) ?>
-                </div>
-            <?php endif; ?>
+            <?php if ($mensagem != "") { ?>
 
-            <!-- DADOS DO CADASTRO -->
-            <?php if (
-                $mensagem === "Máquina cadastrada com sucesso!" &&
-                isset($maquina) &&
-                $maquina !== null
-            ): ?>
+                <div class="mensagem">
 
-                <div class="resultado">
-                    <h2>Máquina cadastrada</h2>
+                    <h3><?= $mensagem ?></h3>
 
-                    <div class="info">
-                        <span>Nome da máquina</span>
-                        <strong><?= escapar($maquina->nome) ?></strong>
-                    </div>
+                    <p>Nome Máquina: <?= escapar($nome) ?></p>
+                    <p>Tipo: <?= escapar($tipo) ?></p>
+                    <p>qtde.: <?= escapar($quantidade) ?></p>
 
-                    <div class="info">
-                        <span>Tipo</span>
-                        <strong><?= escapar($tipo === "esteira" ? "Esteira" : ($tipo === "prensa" ? "Prensa" : "Robô de Soldagem")) ?></strong>
-                    </div>
-
-                    <div class="info">
-                        <span>Quantidade produzida</span>
-                        <strong><?= escapar($maquina->getProducao()) ?> peças</strong>
-                    </div>
-
-                    <div class="info">
-                        <span>Status da operação</span>
-                        <strong><?= escapar($maquina->operar()) ?></strong>
-                    </div>
                 </div>
 
-            <?php endif; ?>
+            <?php } ?>
 
-        </div>
-
-        <!-- RODAPÉ -->
-        <div class="rodape">
-            <p>Sistema de Controle de Produção Industrial</p>
         </div>
 
     </div>
 
 </body>
+
 </html>
