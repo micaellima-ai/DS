@@ -112,39 +112,48 @@ function escapar($texto)
     );
 }
 
-
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pogramação orientada a objeto</title>
 </head>
+
 <body>
+    <h2>SISTEMA DE CONTROLE DE PRODUÇÃO INDUSTRIAL</h2>
+
     <form action="" method="POST">
 
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required>
+        <label for="nome">Nome Maquina:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br><br>
 
-    <label for="tipo">Tipo:</label>
-    <select id="setor" name="setor" required>
-            <option value="Esteira">Esteira</option>
-            <option value="Prensa">Prensa</option>
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo" required>
+            <option value="esteira">Esteira</option>
+            <option value="prensa">Prensa</option>
             <option value="robosoldagem">RoboSoldagem</option>
         </select>
+        <br><br>
 
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" min="0" required>
+        <br><br>
 
-
-
-
-
-
+        <button type="submit" name="acao" value="cadastrar">Cadastrar</button>
 
     </form>
 
+    <?php ?>
 
-    
+
+
+
+
 </body>
+
 </html>
