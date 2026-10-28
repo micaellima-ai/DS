@@ -4,10 +4,13 @@
 //================================
 
 // 1. CLASSE ABSTRATA
+$situacao = "";
+
 abstract class Maquina
 {
     public $nome;
     private $producao;
+  
 
     public function __construct($nome)
     {
@@ -41,7 +44,7 @@ class Esteira extends Maquina
 {
     public function operar()
     {
-        return "Transportando peças...";
+        return $situacao = "Transportando peças...";
     }
 }
 
@@ -49,7 +52,7 @@ class Prensa extends Maquina
 {
     public function operar()
     {
-        return "Prensando peças...";
+        return $situacao = "Prensando peças...";
     }
 }
 
@@ -57,7 +60,7 @@ class RoboSoldagem extends Maquina
 {
     public function operar()
     {
-        return "Soldadndo peças...";
+        return $situacao = "Soldadndo peças...";
     }
 }
 
@@ -170,6 +173,8 @@ function escapar($texto)
 
             <?php if ($mensagem != "") { ?>
 
+
+
                 <div class="mensagem">
 
                     <h3><?= $mensagem ?></h3>
@@ -177,10 +182,15 @@ function escapar($texto)
                     <p>Nome Máquina: <?= $nome ?></p>
                     <p>Tipo: <?= $tipo ?></p>
                     <p>qtde.: <?= $quantidade ?></p>
+                    <p><?= $situacao == 'Prensando peças...'?>
+                
+                </p>
 
                 </div>
 
             <?php } ?>
+
+
 
         </div>
 
