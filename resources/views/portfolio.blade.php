@@ -7,9 +7,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="resources/css/index.css">
+    
 
     <title>Meu Portfólio</title>
+
+    @vite(['resources/css/index.css'])
 
 </head>
 
@@ -208,7 +210,7 @@
 
                     </div>
 
-                    <a href="/index.php?rota=idade" class="link-projeto">
+                    <a href="{{ route('') }}" class="link-projeto">
                         Ver projeto ➙
                     </a>
 

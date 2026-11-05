@@ -1,7 +1,8 @@
 <?php
 
+namespace App\Models;
         // Caminho do arquivo JSON
-        $caminho = __DIR__ . "/../../storage/data/chamados.json";
+        
 
 class Chamado
 {
@@ -9,6 +10,8 @@ class Chamado
     public function listarChamados()
     {
 
+
+    $caminho = storage_path('app\chamados.json');
         global $caminho;
 
         if (!file_exists($caminho)) {
