@@ -12,7 +12,7 @@ export default defineConfig({
                 'resources/css/idade.css',
                 'resources/css/index.css',
                 'resources/css/jogos.css',
-                'resources/css/loyout.css',
+                'resources/css/layout.css',
                 'resources/css/notas.css',
                 'resources/css/poo2.css',
                 'resources/js/app.js'], 
