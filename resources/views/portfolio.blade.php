@@ -210,7 +210,7 @@
 
                     </div>
 
-                    <a href="{{ route('') }}" class="link-projeto">
+                    <a href="{{ route('idade') }}" class="link-projeto">
                         Ver projeto ➙
                     </a>
 
@@ -334,7 +334,7 @@
 
                     </div>
 
-                    <a href="/index.php?rota=helpdesk" class="link-projeto">
+                    <a href="{{ route('helpdesk') }}" class="link-projeto">
                         Ver projeto ➙
                     </a>
 

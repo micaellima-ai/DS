@@ -8,9 +8,16 @@ Route::get('/', function () {
     return view('portfolio');
 });
 
+//HELPDESK
 Route::get('/helpdesk', [HelpdeskController::class, 'index'])->name('helpdesk');
 
 Route::post('/helpdesk', [HelpdeskController::class, 'salvar'])->name('helpdesk.salvar');
+
+//IDADE
+
+
+
+//JOGOS
 
 
 
