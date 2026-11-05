@@ -1,60 +1,55 @@
-<?php
+<?php 
 
 namespace App\Models;
-        // Caminho do arquivo JSON
-        
 
-class Chamado
-{
-    // LER OS CHAMADOS
-    public function listarChamados()
-    {
+class Chamado{
 
+    //READ - Ler todos os chamados 
+    public function lerChamados() {
+        $arquivo = storage_path('app/chamdado.json');
 
-    $caminho = storage_path('app\chamados.json');
-        global $caminho;
-
-        if (!file_exists($caminho)) {
-            file_put_contents($caminho, "[]");
+        //verificação se o arquivo .json já existe
+        if (!file_exists($arquivo)) {
+            file_put_contents($arquivo, "[]");
         }
 
-        $json = file_get_contents($caminho);
-        $chamados = json_decode($json, true);
+        // Ler o arquivo
+        $conteudo = file_get_contents($arquivo);
 
-        if (!is_array($chamados)) {
-            return [];
-        }
+        // Converter o JSON para Array PHP
+        $chamados = json_decode($conteudo, true);
 
-        return $chamados;
+        return is_array($chamados) ? $chamados : [];
+
+        // if (is_array($chamados)) {
+        //     $chamados;
+        // } else {
+        //     [];
+        // }
     }
 
-    // SALVAR OS CHAMADOS
-    public function salvarChamados($chamados)
-    {
-        global $caminho;
+    //Salvar os chamados no JSON
+    public function salvarChamados($chamados) {
+        $arquivo = __DIR__ . "/chamados.json";
 
-        $json = json_encode(
-            $chamados,
-            JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
-        );
-
-        return file_put_contents($caminho, $json) !== false;
+        return file_put_contents(
+            $arquivo, json_encode($chamados, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+        ) !== false;
     }
 
-    // CADASTRAR CHAMADO
-    public function cadastrarChamado($nome, $setor, $equipamento, $descricao, $prioridade)
-    {
+    //CREATE - Cadastrar chamados
+    public function cadastrarChamados($nome, $setor, $eqipamento, $descricao, $prioridade) {
         if (trim($nome) === "" || trim($descricao) === "") {
             return false;
         }
 
-        $chamados = $this -> listarChamados();
-
+        $chamados = $this -> lerChamados();
+        
         $novoChamado = [
-            "nome" => $nome,
+            "nome" => trim($nome),
             "setor" => $setor,
-            "equipamento" => $equipamento,
-            "descricao" => $descricao,
+            "equipamento" => $eqipamento,
+            "descricao" => trim($descricao),
             "prioridade" => $prioridade,
             "status" => "Aberto"
         ];
@@ -64,20 +59,31 @@ class Chamado
         return $this -> salvarChamados($chamados);
     }
 
-    // ATUALIZAR STATUS
-    public function atualizarChamado($posicao, $novoStatus)
-    {
+    //UPDATE - Atualizar status do chamado
+    public function atualizarChamado($posicao, $novoStatus) {
+        $chamados = $this -> lerChamados();
+
         $statusPermitidos = [
             "Aberto",
             "Em andamento",
             "Resolvido"
         ];
 
-        $chamados = $this -> listarChamados();
+        //isset() verefica se uma variável ou posição existe e não contém null.
+        // O ! inverte o resultado.
+        // Portanto:
+        // "Se não existir um chamado naquela posição, encerre a função retornando false
 
         if (!isset($chamados[$posicao])) {
             return false;
         }
+
+        // in_array() verefica se um valor existe dentro de um array.
+        // Nesse caso:
+        // - $novoStatus: valor que queremos procurar.
+        // - $statusPermitidos: lista de valores aceitos.
+        // - true: exige comparação estrita.
+        // O ! significa que a condição será verdadeira quando o valor não estiver na lista.
 
         if (!in_array($novoStatus, $statusPermitidos, true)) {
             return false;
@@ -88,26 +94,28 @@ class Chamado
         return $this -> salvarChamados($chamados);
     }
 
-    // EXCLUIR CHAMADO
-    public function excluirChamado($posicao)
-    {
-        $chamados = $this -> listarChamados();
+    //DELETE - Excluir chamados
+    public function excluirChamado($posicao) {
+        $chamados = $this -> lerChamados();
 
         if (!isset($chamados[$posicao])) {
             return false;
         }
 
+        // DELETAR AQUELA POSIÇÃO ESPECIFICA
         unset($chamados[$posicao]);
 
+
+        // ATUALIZAR A LISTA DE CHAMADOS EM ARRAY
         $chamados = array_values($chamados);
 
+        //SALVAR OS CHAMADOS NOVAMENTE PELA FUNÇÃO salvarChamados
         return $this -> salvarChamados($chamados);
     }
 
-    // GERAR RELATÓRIO
-    public function contarChamados()
-    {
-        $chamados = $this -> listarChamados();
+    //Relatório de atendimentos
+    public function gerarRelatorio() {
+        $chamados = $this -> lerChamados();
 
         $relatorio = [
             "total" => count($chamados),
@@ -129,3 +137,5 @@ class Chamado
         return $relatorio;
     }
 }
+
+?>

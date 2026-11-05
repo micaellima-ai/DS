@@ -14,8 +14,8 @@ use App\Models\Chamado;
       {
           $model = new Chamado();
    
-          $chamados = $model->listarChamados();
-          $relatorio = $model->contarChamados();
+          $chamados = $model->lerChamados();
+          $relatorio = $model->gerarRelatorio();
    
           $mensagem = "";
    
@@ -31,7 +31,7 @@ use App\Models\Chamado;
           $sucesso = false;
    
           if ($acao === "cadastrar") {
-              $sucesso = $model->cadastrarChamado(
+              $sucesso = $model->cadastrarChamados(
                   $_POST["nome"] ?? "",
                   $_POST["setor"] ?? "",
                   $_POST["equipamento"] ?? "",
@@ -59,8 +59,8 @@ use App\Models\Chamado;
               : "Não foi possível realizar a operação.";
    
           // Atualizar os dados após a operação
-          $chamados = $model->listarChamados();
-          $relatorio = $model->contarChamados();
+          $chamados = $model->lerChamados();
+          $relatorio = $model->gerarRelatorio();
    
             return view('projetos.helpdesk', compact('chamados', 'relatorio', 'mensagem'));
       }
