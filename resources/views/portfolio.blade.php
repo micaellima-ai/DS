@@ -210,7 +210,7 @@
 
                     </div>
 
-                    <a href="{{ route('idade') }}" class="link-projeto">
+                    <a href="/index.php?rota=idade" class="link-projeto">
                         Ver projeto ➙
                     </a>
 
