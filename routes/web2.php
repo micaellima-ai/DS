@@ -27,3 +27,5 @@ return [
         'poo' => [new PooController(), 'index']
     ]
 ];
+
+?>
